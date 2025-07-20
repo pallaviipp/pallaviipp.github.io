@@ -58,6 +58,7 @@ window.scrollTo({
             title: "Analyzing Student's Mental Health",
             image: "assets/project3.png",
             description: "Utilized SQL and Python to analyze student mental health data, providing insights into factors affecting well-being and academic performance.",
+            tech: ["Python", "Pandas", "SQL"]
         }
     ];
 
