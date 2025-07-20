@@ -36,24 +36,23 @@ window.scrollTo({
     const projectsData = [
         {
             id: 0,
-            title: "Real-time Log Analysis Platform",
+            title: "Extensive Breast Cancer Assessment Questionnaire based on known risk factors",
             image: "assets/project1.png",
-            description: "Developed a scalable platform for real-time ingestion, processing, and analysis of application logs using Kafka, Spark Streaming, and Elasticsearch.",
-            tech: ["Kafka", "Spark", "Elasticsearch", "Grafana"]
+            description: "Developed a scalable platform for breast cancer risk assessment by using Breast Cancer Surveillance Consortium dataset (~1 million params)
+            tech: ["Python", "SQL", "Streamlit", "Pandas"]
         },
         {
             id: 1,
-            title: "E-commerce Data Warehouse & BI",
+            title: "Greenhouse Monitoring",
             image: "assets/project2.png",
-            description: "Designed and implemented a star-schema data warehouse for an e-commerce platform, enabling comprehensive sales and customer behavior analytics.",
-            tech: ["Snowflake", "dbt", "Tableau", "SQL"]
+            description: "Designed and implemented AWS based pipeline to collect sensor data from a prototype greenhouse, enabling real-time monitoring and data analysis.",
+            tech: ["s3", "DynamoDB", "React"]
         },
         {
             id: 2,
-            title: "IoT Sensor Data Processing",
+            title: "Analyzing Student's Mental Health",
             image: "assets/project3.png",
-            description: "Engineered a robust system for collecting, cleaning, and aggregating data from IoT sensors, supporting real-time anomaly detection and predictive maintenance.",
-            tech: ["AWS IoT Core", "Kinesis", "Lambda", "DynamoDB"]
+            description: "Utilized SQL and Python to analyze student mental health data, providing insights into factors affecting well-being and academic performance.",
         }
     ];
 
