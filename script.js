@@ -83,12 +83,11 @@ window.scrollTo({
     let currentProjectIndex = 0;
     let currentAlbumIndex = 0;
 
-    /* --- INITIALIZE MODALS --- */
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-        modal.style.display = 'none';
-    }); // Add this closing brace to fix the error
-
+  /* --- INITIALIZE MODALS --- */
+const modals = document.querySelectorAll('.modal');
+modals.forEach(modal => {
+    modal.style.display = 'none';
+});
 
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', () => {
