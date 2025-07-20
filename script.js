@@ -61,7 +61,7 @@ window.scrollTo({
         {
             id: 0,
             title: "moments",
-            images: ["assets/album1.jpg", "assets/nature1.jpg", "assets/nature2.jpg"]
+            images: ["assets/sky1.png", "assets/nature1.jpg", "assets/nature2.jpg"]
         },
         {
             id: 1,
