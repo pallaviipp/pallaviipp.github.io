@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pallavi Paudel | Data Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <!-- Left Sidebar Navigation -->
+    <nav class="sidebar-nav">
+        <div class="sidebar-logo">
+            <span class="logo-text">P</span>
+            <span class="logo-separator">//</span>
+            <span class="logo-text">P</span>
+        </div>
+        <ul class="sidebar-nav-list">
+            <li><a href="#overview" class="sidebar-nav-link active" data-section-id="overview">[ 00_OVERVIEW ]</a></li>
+            <li><a href="#about-me" class="sidebar-nav-link" data-section-id="about-me">[ 01_ABOUT ME ]</a></li>
+            <li><a href="#projects" class="sidebar-nav-link" data-section-id="projects">[ 02_PROJECTS ]</a></li>
+            <li><a href="#albums" class="sidebar-nav-link" data-section-id="albums">[ 03_ALBUMS ]</a></li>
+            <li><a href="#writings" class="sidebar-nav-link" data-section-id="writings">[ 04_WRITINGS ]</a></li>
+            <li><a href="#wordscreams" class="sidebar-nav-link" data-section-id="wordscreams">[ 05_WORDSCREAMS ]</a></li>
+            <li><a href="#contact" class="sidebar-nav-link" data-section-id="contact">[ 06_CONTACT ]</a></li>
+        </ul>
+        <div class="sidebar-social">
+            <a href="https://github.com/pallaviipp" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/pallavipaudel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Right Menu Toggle Button -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+    </button>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" class="dark-mode-toggle-visible" data-theme="dark">
+        <span class="icon">🌙</span>
+    </button>
+
+    <!-- Right Slide-out Menu -->
+    <nav class="slide-menu" id="slideMenu">
+        <div class="slide-menu-header">
+            <h3>Navigation</h3>
+            <button class="close-menu" id="closeMenu">&times;</button>
+        </div>
+        <ul class="slide-menu-list">
+            <li><a href="#overview" class="slide-menu-link" data-section-id="overview">[ 00_OVERVIEW ]</a></li>
+            <li><a href="#about-me" class="slide-menu-link" data-section-id="about-me">[ 01_ABOUT ME ]</a></li>
+            <li><a href="#projects" class="slide-menu-link" data-section-id="projects">[ 02_PROJECTS ]</a></li>
+            <li><a href="#albums" class="slide-menu-link" data-section-id="albums">[ 03_ALBUMS ]</a></li>
+            <li><a href="#writings" class="slide-menu-link" data-section-id="writings">[ 04_WRITINGS ]</a></li>
+            <li><a href="#wordscreams" class="slide-menu-link" data-section-id="wordscreams">[ 05_WORDSCREAMS ]</a></li>
+            <li><a href="#contact" class="slide-menu-link" data-section-id="contact">[ 06_CONTACT ]</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+<!-- Overview Section -->
+<section id="overview">
+    <div class="hero">
+        <div class="profile-container animate pop-up">
+            <img src="assets/profile.png" alt="Pallavi Paudel" class="profile-pic">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+        </div>
+        <div id="cli-intro" class="animate fade-in">
+            <!-- CLI intro text will be dynamically typed here -->
+        </div>
+        <h1 class="tagline animate slide-in-left">
+            <span class="accent-text">Aspiring Data Engineer</span> learning to build intelligent, scalable data solutions.
+        </h1>
+        <p class="description animate slide-in-right">
+            Curious about turning complex data into meaningful insights, and growing through hands-on experience in pipelines, analytics, and cloud tools.
+        </p>
+        <div class="cta-buttons-and-social animate pop-up">
+            <div class="cta-buttons">
+                <a href="#projects" class="cta-button primary">[ See My Work ]</a>
+                <a href="assets/pallulatestres12-2.pdf" target="_blank" rel="noopener noreferrer" class="cta-button secondary">[ Download Resume ]</a>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/pallavipaudel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="https://github.com/pallaviipp" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- About Me Section -->
+        <section id="about-me">
+            <h2>ABOUT ME</h2>
+            <div class="about-me-container">
+                <div class="about-tabs">
+                    <button class="tab-button active" data-slide="0">Experience</button>
+                    <button class="tab-button" data-slide="1">Education</button>
+                    <button class="tab-button" data-slide="2">Skills</button>
+                    <button class="tab-button" data-slide="3">Volunteering</button>
+                </div>
+
+                <div class="swiper about-me-carousel">
+                    <div class="swiper-wrapper">
+                        <!-- Experience -->
+                        <div class="swiper-slide">
+                            <h3>Experience</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h4>Cloud Solutions Apprentice <span class="timeline-date">Sep 2024 - Mar 2025</span></h4>
+                                    <p class="company">Adex International</p>
+                                    <ul>
+                                        <li>Did multiple lab sessions revolving around scalable microservices on AWS S3, EC2, and Lambda.</li>
+                                        <li>Configured IAM policies and VPC security groups following AWS Well-Architected Framework principles.</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>Data Warehousing and BI Trainee <span class="timeline-date">Jan 2021 - May 2023</span></h4>
+                                    <p class="company">LIS Nepal</p>
+                                    <ul>
+                                        <li>Used SQL for data extraction, transformation, and loading across structured datasets.</li>
+                                        <li>Worked with Snowflake and Power BI to develop dashboards and gain insights from large volumes of data.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education -->
+                        <div class="swiper-slide">
+                            <h3>Education</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h4>Bachelor's in Engineering, Electronics, Communication and Information Engineering <span class="timeline-date">2021 - 2025</span></h4>
+                                    <p class="company">IOE, Pulchowk Campus</p>
+                                    <ul>
+                                        <li>Relevant Coursework: Data Warehousing, Data Mining, Big Data, Database Management Systems, Data Structures & Algorithms, Object-Oriented Programming, Artificial Intelligence.</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>+2 (Plus Two) Science <span class="timeline-date">2018 - 2020</span></h4>
+                                    <p class="company">St. Xavier's College, Maitighar</p>
+                                    <ul>
+                                        <li>3.73/4</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>Secondary School (Eight to SEE) <span class="timeline-date">2015 - 2018</span></h4>
+                                    <p class="company">Sainik Awasiya Mahavidyalaya, Chitwan</p>
+                                    <ul>
+                                        <li>3.85/4</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="swiper-slide">
+                            <h3>Skills</h3>
+                            <div class="skills-grid">
+                                <div class="skill-category">
+                                    <h4>Programming</h4>
+                                    <p>Python (Pandas, NumPy, FastAPI), SQL, PySpark, JavaScript</p>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>Cloud Platforms</h4>
+                                    <p>AWS (S3, Redshift, Lambda)</p>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>Big Data</h4>
+                                    <p>Apache Spark, Hadoop</p>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>Databases</h4>
+                                    <p>PostgreSQL, MySQL, Snowflake</p>
+                                </div>
+                                <div class="skill-category">
+                                    <h4>Libraries, Tools & Concepts</h4>
+                                    <p>React, Git, GitHub, Data Modeling, ETL/ELT, Data Warehousing</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Volunteering -->
+                        <div class="swiper-slide">
+                            <h3>Volunteering</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h4>Chair <span class="timeline-date">Jun 2024 – Jan 2025</span></h4>
+                                    <p class="company">IEEE Women in Engineering, Pulchowk</p>
+                                    <ul>
+                                        <li>Founded local chapter and organized multiple technical workshops.</li>
+                                        <li>Led "Cybershikshit" digital safety awareness campaign across 5 government schools, reaching 300+ students.</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>Vice Chair <span class="timeline-date">Dec 2021 – Feb 2023</span></h4>
+                                    <p class="company">IEEE Pulchowk Student Branch</p>
+                                    <ul>
+                                        <li>Organized IEEE Xtreme 17.0, Nepal’s first hosting of the global coding competition with 100+ participants.</li>
+                                        <li>Facilitated technical workshops on data structures, competitive programming, blockchain, LaTeX, and database design.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>PROJECTS</h2>
+            <p class="section-description">A showcase of my recent projects.</p>
+            <div class="swiper projects-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide project-card" data-project-id="0">
+                        <h3>how-likely-is-cancer</h3>
+                        <p class="project-description"> Built comprehensive health risk assessment application with FastAPI backend and SQLite database for patient data
+                            management</p>
+                        <div class="project-tech">
+                            <span>Python</span> <span>SQL</span> <span>Streamlit</span> <span>ETL</span>
+                        </div>
+                        <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                    </div>
+                    <div class="swiper-slide project-card" data-project-id="1">
+                        <h3>E-commerce Data Warehouse & BI</h3>
+                        <p class="project-description">Designed and implemented a star-schema data warehouse for an e-commerce platform, enabling comprehensive sales and customer behavior analytics.</p>
+                        <div class="project-tech">
+                            <span>Snowflake</span> <span>dbt</span> <span>Tableau</span> <span>SQL</span>
+                        </div>
+                        <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                    </div>
+                    <div class="swiper-slide project-card" data-project-id="2">
+                        <h3>IoT Sensor Data Processing</h3>
+                        <p class="project-description">Engineered a robust system for collecting, cleaning, and aggregating data from IoT sensors, supporting real-time anomaly detection and predictive maintenance.</p>
+                        <div class="project-tech">
+                            <span>AWS IoT Core</span> <span>Kinesis</span> <span>Lambda</span> <span>DynamoDB</span>
+                        </div>
+                        <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+ <!-- Albums Section -->
+<section id="albums">
+    <h2>ALBUMS</h2>
+    <p class="section-description"><em>
+        So many favorite pictures yet to be taken.<br>
+        But before we speak of impermanence,<br>
+        before we mourn the moments that were never ours,<br>
+        let’s just say:<br><br>
+        this is all that remains of you,<br>
+        and all that remains of me,<br>
+        frozen smiles,<br>
+        mere pictures,<br>
+        trying to outlive what we couldn’t.
+    </em></p>
+    
+     <div class="album-grid">
+            <div class="album-folder" data-album-id="0">
+                <img src="assets/album1.jpg" alt="Album 1" class="album-cover">
+                <h3>I Wandered Through the Light</h3>
+                <p>Does the sky remember me? </p>
+            </div>
+            <div class="album-folder" data-album-id="1">
+                <img src="assets/album2.jpg" alt="Album 2" class="album-cover">
+                <h3>The City Is So Full of Ghosts</h3>
+                <p>Been away from home so long, nowhere feels like home</p>
+            </div>
+            <div class="album-folder" data-album-id="2">
+                <img src="assets/album3.jpg" alt="Album 3" class="album-cover">
+                <h3>Is this home?</h3>
+                <p>Hugs and loves</p>
+            </div>
+            <div class="album-folder" data-album-id="3">
+                <img src="assets/album4.jpg" alt="Album 4" class="album-cover">
+                <h3>Ode to a Hungry Soul</h3>
+                <p>Food has never been my friend but I try to make peace with hunger</p>
+            </div>
+        </div>
+        
+
+<!-- Writings Section -->
+<section id="writings">
+    <h2>WRITINGS</h2>
+    <div class="writing-categories">
+        <div class="writing-category">
+            <h3 class="category-title">
+                <span>Musings</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </h3>
+            <div class="category-content">
+                <div class="writing-item">
+                    <h4>A Quiet Evening</h4>
+                    <p>Reflections on solitude and creativity...</p>
+                    <button class="open-writing-modal" data-title="A Quiet Evening" data-body="In the quiet moments of the evening, when the world slows down and the mind finds space to breathe, creativity often emerges.">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="writing-category">
+            <h3 class="category-title">
+                <span>Not-Musings</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </h3>
+            <div class="category-content">
+                <div class="writing-item">
+                    <h4>Where are we headed?</h4>
+                    <p>AI ethics..</p>
+                    <button class="open-writing-modal" data-title="AI ethics" data-body="Building reliable data systems requires adherence to key principles: designing for scalability, ensuring data quality, implementing proper monitoring, and maintaining clear documentation.">Read More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wordscreams Section -->
+<section id="wordscreams">
+    <h2>WORDSCREAMS</h2>
+    <p class="section-description">A space for quick thoughts and real-time updates.</p>
+    <div class="wordscreams-container">
+        <div class="compose-scream">
+            <div class="compose-area">
+                <div class="avatar">P</div>
+                <div class="compose-input">
+                    <textarea id="screamInput" class="scream-textarea" placeholder="What's on your mind?" maxlength="280"></textarea>
+                </div>
+            </div>
+            <div class="compose-actions">
+                <span id="charCount" class="char-count">0/280</span>
+                <button id="screamBtn" class="scream-button" disabled>Scream</button>
+            </div>
+        </div>
+        <div id="screamsFeed" class="screams-feed">
+            <div class="empty-state">
+                <p>No wordscreams yet. Be the first to share your thoughts!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>CONTACT</h2>
+    <div class="contact-container">
+        <p class="contact-intro">I'm currently seeking new opportunities. Feel free to reach out!</p>
+        <div class="contact-links">
+            <a href="mailto:pallavipaudel@gmail.com" class="cta-button">[ Email ]</a>
+        </div>
+    </div>
+</section>
+
+<!-- Project Modal -->
+<div id="projectModal" class="modal">
+    <div class="modal-content project-modal-content">
+        <span class="close-button">&times;</span>
+        <div class="project-modal-body">
+            <div class="project-modal-image-container">
+                <img id="projectModalImage" src="" alt="">
+            </div>
+            <div class="project-modal-details">
+                <h3 id="projectModalTitle"></h3>
+                <p id="projectModalDescription"></p>
+                <div id="projectModalTech" class="project-tech"></div>
+            </div>
+        </div>
+        <div class="project-modal-navigation">
+            <button id="prevProjectBtn" class="nav-arrow">‹</button>
+            <button id="nextProjectBtn" class="nav-arrow">›</button>
+        </div>
+    </div>
+</div>
+
+<!-- Album Modal -->
+<div id="albumModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3 id="albumModalTitle"></h3>
+        <div id="albumGallery" class="album-gallery"></div>
+        <div class="album-navigation">
+            <button id="prevAlbumBtn" class="nav-arrow">‹</button>
+            <button id="nextAlbumBtn" class="nav-arrow">›</button>
+        </div>
+    </div>
+</div>
+<!-- Writing Modal -->
+<div id="writingModal" class="modal">
+    <div class="modal-content writing-modal-content">
+        <span class="close-button">&times;</span>
+        <div class="writing-modal-header">
+            <h3 id="modalTitle"></h3>
+            <div class="writing-date">Today</div>
+        </div>
+        <div id="modalBody" class="writing-modal-body"></div>
+        <div class="writing-modal-footer">
+            <button class="cta-button">Save Entry</button>
+        </div>
+    </div>
+</div>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTop" class="scroll-to-top">↑</button>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
