@@ -37,21 +37,21 @@ window.scrollTo({
         {
             id: 0,
             title: "Real-time Log Analysis Platform",
-            image: "assets/project1.jpg",
+            image: "assets/project1.png",
             description: "Developed a scalable platform for real-time ingestion, processing, and analysis of application logs using Kafka, Spark Streaming, and Elasticsearch.",
             tech: ["Kafka", "Spark", "Elasticsearch", "Grafana"]
         },
         {
             id: 1,
             title: "E-commerce Data Warehouse & BI",
-            image: "assets/project2.jpg",
+            image: "assets/project2.png",
             description: "Designed and implemented a star-schema data warehouse for an e-commerce platform, enabling comprehensive sales and customer behavior analytics.",
             tech: ["Snowflake", "dbt", "Tableau", "SQL"]
         },
         {
             id: 2,
             title: "IoT Sensor Data Processing",
-            image: "assets/project3.jpg",
+            image: "assets/project3.png",
             description: "Engineered a robust system for collecting, cleaning, and aggregating data from IoT sensors, supporting real-time anomaly detection and predictive maintenance.",
             tech: ["AWS IoT Core", "Kinesis", "Lambda", "DynamoDB"]
         }
@@ -61,22 +61,22 @@ window.scrollTo({
         {
             id: 0,
             title: "moments",
-            images: ["assets/sky1.png", "assets/nature1.jpg", "assets/nature2.jpg"]
+            images: ["assets/sky1.png", "assets/sky2.png", "assets/sky3.png", "assets/sky4.png"]
         },
         {
             id: 1,
             title: "places",
-            images: ["assets/album2.jpg", "assets/urban1.jpg", "assets/urban2.jpg"]
+            images: ["assets/place3.png", "assets/place1.png", "assets/place2.png", "assets/place4.png"]
         },
         {
             id: 2,
             title: "<3",
-            images: ["assets/album3.jpg", "assets/culture1.jpg", "assets/culture2.jpg"]
+            images: ["assets/people4.png", "assets/peole1.png", "assets/people2.png", "assets/people3.png"]
         },
         {
             id: 3,
             title: "nom nom",
-            images: ["assets/album4.jpg", "assets/food1.jpg", "assets/food2.jpg"]
+            images: ["assets/chiya1.png", "assets/food2.png"]
         }
     ];
 
