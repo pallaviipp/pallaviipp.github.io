@@ -47,12 +47,6 @@ html {
   scroll-padding-top: 20px; /* Adjust this value as needed */
 }
 
-/* Add this to prevent initial scroll jump */
-body:not(.user-has-scrolled) {
-  overflow: hidden;
-  height: 100vh;
-}
-
 body {
   background-color: var(--bg-color);
   color: var(--text-color);

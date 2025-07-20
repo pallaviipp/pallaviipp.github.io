@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Script loaded successfully!');
 
-if (window.location.hash) {
-   window.history.replaceState(null, null, ' ');
-}
+    // Remove any existing hash from URL without affecting scroll
+    if (window.location.hash) {
+        window.history.replaceState(null, null, ' ');
+    }
 
     // Scroll to top on page load
 window.scrollTo({
@@ -31,6 +32,10 @@ window.scrollTo({
     const screamBtn = document.getElementById('screamBtn');
     const charCount = document.getElementById('charCount');
     const screamsFeed = document.getElementById('screamsFeed');
+
+    body.style.overflow = '';
+    body.style.height = '';
+
 
     /* --- DATA --- */
     const projectsData = [
