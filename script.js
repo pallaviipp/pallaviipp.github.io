@@ -38,7 +38,7 @@ window.scrollTo({
             id: 0,
             title: "Extensive Breast Cancer Assessment Questionnaire based on known risk factors",
             image: "assets/project1.png",
-            description: "Developed a scalable platform for breast cancer risk assessment by using Breast Cancer Surveillance Consortium dataset (~1 million params)
+            description: "Developed a scalable platform for breast cancer risk assessment by using Breast Cancer Surveillance Consortium dataset (~1 million params)",
             tech: ["Python", "SQL", "Streamlit", "Pandas"]
         },
         {
