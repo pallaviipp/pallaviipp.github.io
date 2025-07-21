@@ -63,7 +63,7 @@ window.scrollTo({
         {
             id: 3,
             title: "RemitCalc",
-            image: "assets/project4.jpg", 
+            image: "assets/project4.png", 
             description: "Full-stack application fetching real-time and historical currency exchange rates from Nepal Rastra Bank API with React frontend and Express backend.",
             tech: ["React", "Express.js", "REST API", "Axios"]
         }
