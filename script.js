@@ -59,6 +59,13 @@ window.scrollTo({
             image: "assets/project3.png",
             description: "Utilized SQL and Python to analyze student mental health data, providing insights into factors affecting well-being and academic performance.",
             tech: ["Python", "Pandas", "SQL"]
+        },
+        {
+            id: 3,
+            title: "RemitCalc",
+            image: "assets/project4.jpg", 
+            description: "Full-stack application fetching real-time and historical currency exchange rates from Nepal Rastra Bank API with React frontend and Express backend.",
+            tech: ["React", "Express.js", "REST API", "Axios"]
         }
     ];
 
