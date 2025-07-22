@@ -81,48 +81,65 @@ a:hover {
   color: var(--accent-color-glow);
 }
 
-/*main logo*/
-
-.overview-logo {
+/* Fixed main Logo  */
+.fixed-logo {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: auto;
+  max-width: 300px;
   text-align: center;
-  margin-bottom: 2rem;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  pointer-events: none; /* Allows clicks to pass through */
+  mix-blend-mode: luminosity;
+  transition: all 0.3s ease;
 }
 
-.logo-image {
+.fixed-logo img {
+  height: 60px; /* Fixed height */
+  width: auto;
   max-width: 100%;
-  height: auto;
+  object-fit: contain;
   filter: drop-shadow(0 0 10px var(--accent-color-glow));
-  transition: filter 0.3s ease;
 }
 
 /* Dark/Light Mode Adaptations */
-.dark-mode .logo-image {
-  filter: drop-shadow(0 0 15px rgba(147, 112, 219, 0.6)) 
-          brightness(1.1);
+.dark-mode .fixed-logo img {
+  filter: drop-shadow(0 0 15px rgba(147, 112, 219, 0.7));
 }
 
-.light-mode .logo-image {
-  filter: drop-shadow(0 0 8px rgba(147, 112, 219, 0.4))
-          contrast(1.1);
+.light-mode .fixed-logo img {
+  filter: drop-shadow(0 0 8px rgba(147, 112, 219, 0.4));
+}
+
+/* Adjust other fixed elements to avoid overlap */
+.sidebar-nav {
+  top: 100px; /* Push sidebar down below logo */
+}
+
+.menu-toggle {
+  top: 30px; /* Position below logo */
+}
+
+.dark-mode-toggle-visible {
+  top: 30px; /* Align with menu button */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .overview-logo {
-      max-width: 280px;
-      margin-bottom: 1.5rem;
+  .fixed-logo {
+      max-width: 200px;
+      top: 15px;
+  }
+  .fixed-logo img {
+      height: 50px;
+  }
+  
+  .sidebar-nav {
+      top: 80px;
   }
 }
-
-@media (max-width: 480px) {
-  .overview-logo {
-      max-width: 220px;
-  }
-}
-
 
 
 
