@@ -105,7 +105,7 @@ a:hover {
 }
 
 .sidebar-logo img {
-  height: 100px; /* Fixed size */
+  height: 85px; /* Fixed size */
   width: auto;
   transition: var(--transition-smooth);
   display: block;
@@ -230,7 +230,7 @@ a:hover {
 }
 
 .slide-menu-header img {
-  height: 90px !important; /* Force larger size */
+  height: 75px !important; /* Force larger size */
   width: auto;
   margin-right: 1rem; /* Space between logo and close button */
 }
