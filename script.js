@@ -158,9 +158,9 @@ if (closeMenu) {
     /* --- CLI TYPING EFFECT --- */
     if (cliIntro) {
         const introText = [
-            "Hi, I'm Pallavi Paudel.",
-            ">$ Initializing Data Engineer Portfolio...",
-            ">$ Loading modules: [Spark, Snowflake, Python, AWS]",
+            ">$ Hi, I'm Pallavi,",
+            ">$ I am trying to learn and explore the world of data engineering and analysis",
+            ">$ I have been working with Python, SQL, and various data tools.",
             ">$ Status: Online. Ready for exploration."
         ];
         let lineIndex = 0;

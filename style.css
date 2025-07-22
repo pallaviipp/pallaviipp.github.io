@@ -81,6 +81,35 @@ a:hover {
   color: var(--accent-color-glow);
 }
 
+.corner-logo {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 120px;
+  mix-blend-mode: luminosity;
+  opacity: 0.9;
+  transition: var(--transition-smooth);
+}
+
+.corner-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.corner-logo img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .corner-logo {
+      width: 80px;
+      top: 10px;
+      right: 10px;
+  }
+}
+
 /* --- LEFT SIDEBAR NAVIGATION --- */
 .sidebar-nav {
   position: fixed;
