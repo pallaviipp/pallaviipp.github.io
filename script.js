@@ -102,22 +102,32 @@ modals.forEach(modal => {
     modal.style.display = 'none';
 });
 
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                darkModeToggle.querySelector('.icon').textContent = '☀️';
-                localStorage.setItem('theme', 'light-mode');
-            } else {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                darkModeToggle.querySelector('.icon').textContent = '🌙';
-                localStorage.setItem('theme', 'dark-mode');
-            }
-        });
-    }
+// Set initial theme state
+const savedTheme = localStorage.getItem('theme') || 'dark-mode'; // Default to dark
+body.classList.add(savedTheme);
 
+if (darkModeToggle) {
+    // Initialize toggle state
+    darkModeToggle.dataset.theme = savedTheme;
+    darkModeToggle.querySelector('.icon').textContent = savedTheme === 'dark-mode' ? '🌙' : '☀️';
+    
+    // Toggle functionality
+    darkModeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            darkModeToggle.querySelector('.icon').textContent = '☀️';
+            darkModeToggle.dataset.theme = 'light-mode';
+            localStorage.setItem('theme', 'light-mode');
+        } else {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            darkModeToggle.querySelector('.icon').textContent = '🌙';
+            darkModeToggle.dataset.theme = 'dark-mode';
+            localStorage.setItem('theme', 'dark-mode');
+        }
+    });
+}
     /* --- MENU FUNCTIONALITY --- */
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
