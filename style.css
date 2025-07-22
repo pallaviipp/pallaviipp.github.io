@@ -81,34 +81,50 @@ a:hover {
   color: var(--accent-color-glow);
 }
 
-.corner-logo {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  width: 120px;
-  mix-blend-mode: luminosity;
-  opacity: 0.9;
-  transition: var(--transition-smooth);
+/*main logo*/
+
+.overview-logo {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.corner-logo:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.corner-logo img {
-  width: 100%;
+.logo-image {
+  max-width: 100%;
   height: auto;
+  filter: drop-shadow(0 0 10px var(--accent-color-glow));
+  transition: filter 0.3s ease;
 }
 
+/* Dark/Light Mode Adaptations */
+.dark-mode .logo-image {
+  filter: drop-shadow(0 0 15px rgba(147, 112, 219, 0.6)) 
+          brightness(1.1);
+}
+
+.light-mode .logo-image {
+  filter: drop-shadow(0 0 8px rgba(147, 112, 219, 0.4))
+          contrast(1.1);
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .corner-logo {
-      width: 80px;
-      top: 10px;
-      right: 10px;
+  .overview-logo {
+      max-width: 280px;
+      margin-bottom: 1.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .overview-logo {
+      max-width: 220px;
+  }
+}
+
+
+
 
 /* --- LEFT SIDEBAR NAVIGATION --- */
 .sidebar-nav {
