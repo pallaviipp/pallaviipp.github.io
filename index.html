@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pallavi Paudel | Data Engineer</title>
     <script>
-        (function() {
+        (function () {
             const savedTheme = localStorage.getItem('theme') || 'dark-mode';
             document.documentElement.classList.add(savedTheme);
         })();
     </script>
-    
-    <link rel="icon" href="assets/icon.png" type="image/png">
 
-    <!-- (for iOS devices) -->
-    <link rel="apple-touch-icon" href="assets/icon.png">
-    
-    <!--older browsers -->
-    <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon">
+    <!-- Favicon for modern browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16x16.png">
+
+    <!-- Apple Touch Icon (for iOS home screen) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180x180.png">
+
+    <!-- Safari Pinned Tab Icon -->
+    <link rel="mask-icon" href="assets/icon.svg" color="#9370db">
+
+    <!-- Windows Metro Tile Icon -->
+    <meta name="msapplication-TileImage" content="assets/icon-144x144.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="dark-mode">
     <!-- Left Sidebar Navigation -->
     <nav class="sidebar-nav">
@@ -39,14 +50,16 @@
             <li><a href="#projects" class="sidebar-nav-link" data-section-id="projects">[ 02_PROJECTS ]</a></li>
             <li><a href="#albums" class="sidebar-nav-link" data-section-id="albums">[ 03_ALBUMS ]</a></li>
             <li><a href="#writings" class="sidebar-nav-link" data-section-id="writings">[ 04_WRITINGS ]</a></li>
-            <li><a href="#wordscreams" class="sidebar-nav-link" data-section-id="wordscreams">[ 05_WORDSCREAMS ]</a></li>
+            <li><a href="#wordscreams" class="sidebar-nav-link" data-section-id="wordscreams">[ 05_WORDSCREAMS ]</a>
+            </li>
             <li><a href="#contact" class="sidebar-nav-link" data-section-id="contact">[ 06_CONTACT ]</a></li>
         </ul>
         <div class="sidebar-social">
             <a href="https://github.com/pallaviipp" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://linkedin.com/in/pallavipaudel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/pallavipaudel" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn">
                 <i class="fab fa-linkedin"></i>
             </a>
         </div>
@@ -83,37 +96,42 @@
 
     <!-- Main Content -->
     <main class="main-content">
-<!-- Overview Section -->
-<section id="overview">
-    <div class="hero">
-        <div class="profile-container animate pop-up">
-            <img src="assets/profile.png" alt="Pallavi Paudel" class="profile-pic">
-            <div class="bubble bubble-1"></div>
-            <div class="bubble bubble-2"></div>
-            <div class="bubble bubble-3"></div>
-            <div class="bubble bubble-4"></div>
-        </div>
-        <div id="cli-intro" class="animate fade-in">
-            <!-- CLI intro text -->
-        </div>
-        <h1 class="tagline animate slide-in-left">
-            <span class="accent-text">Aspiring Data Engineer</span> learning to build intelligent, scalable data solutions.
-        </h1>
-        <p class="description animate slide-in-right">
-            Curious about turning complex data into meaningful insights, and growing through hands-on experience in pipelines, analytics, and cloud tools.
-        </p>
-        <div class="cta-buttons-and-social animate pop-up">
-            <div class="cta-buttons">
-                <a href="#projects" class="cta-button primary">[ See My Work ]</a>
-                <a href="assets/newresumepallu.pdf" target="_blank" rel="noopener noreferrer" class="cta-button secondary">[ Download Resume ]</a>
+        <!-- Overview Section -->
+        <section id="overview">
+            <div class="hero">
+                <div class="profile-container animate pop-up">
+                    <img src="assets/profile.png" alt="Pallavi Paudel" class="profile-pic">
+                    <div class="bubble bubble-1"></div>
+                    <div class="bubble bubble-2"></div>
+                    <div class="bubble bubble-3"></div>
+                    <div class="bubble bubble-4"></div>
+                </div>
+                <div id="cli-intro" class="animate fade-in">
+                    <!-- CLI intro text -->
+                </div>
+                <h1 class="tagline animate slide-in-left">
+                    <span class="accent-text">Aspiring Data Engineer</span> learning to build intelligent, scalable data
+                    solutions.
+                </h1>
+                <p class="description animate slide-in-right">
+                    Curious about turning complex data into meaningful insights, and growing through hands-on experience
+                    in pipelines, analytics, and cloud tools.
+                </p>
+                <div class="cta-buttons-and-social animate pop-up">
+                    <div class="cta-buttons">
+                        <a href="#projects" class="cta-button primary">[ See My Work ]</a>
+                        <a href="assets/newresumepallu.pdf" target="_blank" rel="noopener noreferrer"
+                            class="cta-button secondary">[ Download Resume ]</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/pallavipaudel" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="https://github.com/pallaviipp" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub"><i class="fab fa-github fa-2x"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/pallavipaudel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
-                <a href="https://github.com/pallaviipp" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github fa-2x"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- About Me Section -->
         <section id="about-me">
@@ -133,19 +151,25 @@
                             <h3>Experience</h3>
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <h4>Cloud Solutions Apprentice <span class="timeline-date">Sep 2024 - Mar 2025</span></h4>
+                                    <h4>Cloud Solutions Apprentice <span class="timeline-date">Sep 2024 - Mar
+                                            2025</span></h4>
                                     <p class="company">Adex International</p>
                                     <ul>
-                                        <li>Did multiple lab sessions revolving around scalable microservices on AWS S3, EC2, and Lambda.</li>
-                                        <li>Configured IAM policies and VPC security groups following AWS Well-Architected Framework principles.</li>
+                                        <li>Did multiple lab sessions revolving around scalable microservices on AWS S3,
+                                            EC2, and Lambda.</li>
+                                        <li>Configured IAM policies and VPC security groups following AWS
+                                            Well-Architected Framework principles.</li>
                                     </ul>
                                 </div>
                                 <div class="timeline-item">
-                                    <h4>Data Warehousing and BI Trainee, Elective Coursework <span class="timeline-date">nov 2024 - Mar 2025</span></h4>
+                                    <h4>Data Warehousing and BI Trainee, Elective Coursework <span
+                                            class="timeline-date">nov 2024 - Mar 2025</span></h4>
                                     <p class="company">LIS Nepal</p>
                                     <ul>
-                                        <li>Used SQL for data extraction, transformation, and loading across structured datasets.</li>
-                                        <li>Worked with Snowflake and Power BI to develop dashboards and gain insights from large volumes of data.</li>
+                                        <li>Used SQL for data extraction, transformation, and loading across structured
+                                            datasets.</li>
+                                        <li>Worked with Snowflake and Power BI to develop dashboards and gain insights
+                                            from large volumes of data.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -156,10 +180,13 @@
                             <h3>Education</h3>
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <h4>Bachelor's in Engineering, Electronics, Communication and Information Engineering <span class="timeline-date">2021 - 2025</span></h4>
+                                    <h4>Bachelor's in Engineering, Electronics, Communication and Information
+                                        Engineering <span class="timeline-date">2021 - 2025</span></h4>
                                     <p class="company">IOE, Pulchowk Campus</p>
                                     <ul>
-                                        <li>Relevant Coursework: Data Warehousing, Data Mining, Big Data, Database Management Systems, Data Structures & Algorithms, Object-Oriented Programming, Artificial Intelligence.</li>
+                                        <li>Relevant Coursework: Data Warehousing, Data Mining, Big Data, Database
+                                            Management Systems, Data Structures & Algorithms, Object-Oriented
+                                            Programming, Artificial Intelligence.</li>
                                     </ul>
                                 </div>
                                 <div class="timeline-item">
@@ -170,7 +197,8 @@
                                     </ul>
                                 </div>
                                 <div class="timeline-item">
-                                    <h4>Secondary School (Eight to SEE) <span class="timeline-date">2015 - 2018</span></h4>
+                                    <h4>Secondary School (Eight to SEE) <span class="timeline-date">2015 - 2018</span>
+                                    </h4>
                                     <p class="company">Sainik Awasiya Mahavidyalaya, Chitwan</p>
                                     <ul>
                                         <li>3.85/4</li>
@@ -215,15 +243,18 @@
                                     <p class="company">IEEE Women in Engineering, Pulchowk</p>
                                     <ul>
                                         <li>Founded local chapter and organized multiple technical workshops.</li>
-                                        <li>Led "Cybershikshit" digital safety awareness campaign across 5 government schools, reaching 300+ students.</li>
+                                        <li>Led "Cybershikshit" digital safety awareness campaign across 5 government
+                                            schools, reaching 300+ students.</li>
                                     </ul>
                                 </div>
                                 <div class="timeline-item">
                                     <h4>Vice Chair <span class="timeline-date">Dec 2021 – Feb 2023</span></h4>
                                     <p class="company">IEEE Pulchowk Student Branch</p>
                                     <ul>
-                                        <li>Organized IEEE Xtreme 17.0, Nepal’s first hosting of the global coding competition with 100+ participants.</li>
-                                        <li>Facilitated technical workshops on data structures, competitive programming, blockchain, LaTeX, and database design.</li>
+                                        <li>Organized IEEE Xtreme 17.0, Nepal’s first hosting of the global coding
+                                            competition with 100+ participants.</li>
+                                        <li>Facilitated technical workshops on data structures, competitive programming,
+                                            blockchain, LaTeX, and database design.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -235,217 +266,228 @@
         </section>
 
 
-<!-- Projects Section -->
-<section id="projects">
-    <h2>PROJECTS</h2>
-    <p class="section-description">A showcase of my recent projects.</p>
-    <div class="swiper projects-swiper">
-        <div class="swiper-wrapper">
-            <!-- Existing Project 1 -->
-            <div class="swiper-slide project-card" data-project-id="0">
-                <h3>how-likely-is-cancer</h3>
-                <p class="project-description">Built comprehensive health risk assessment application with FastAPI backend and SQLite database for patient data management</p>
-                <div class="project-tech">
-                    <span>Python</span> <span>SQL</span> <span>Streamlit</span> <span>ETL</span>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>PROJECTS</h2>
+            <p class="section-description">A showcase of my recent projects.</p>
+            <div class="swiper projects-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Existing Project 1 -->
+                    <div class="swiper-slide project-card" data-project-id="0">
+                        <h3>how-likely-is-cancer</h3>
+                        <p class="project-description">Built comprehensive health risk assessment application with
+                            FastAPI backend and SQLite database for patient data management</p>
+                        <div class="project-tech">
+                            <span>Python</span> <span>SQL</span> <span>Streamlit</span> <span>ETL</span>
+                        </div>
+                        <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                    </div>
+
+                    <!-- Existing Project 2 -->
+                    <div class="swiper-slide project-card" data-project-id="1">
+                        <h3>Greenhouse Monitoring App</h3>
+                        <p class="project-description">An IoT solution visualizing sensor data and automating greenhouse
+                            control via AWS and Axios</p>
+                        <div class="project-tech">
+                            <span>React</span> <span>Bootstrap</span> <span>AWS S3</span> <span>DynamoDB</span>
+                        </div>
+                        <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                    </div>
+
+                    <!-- Existing Project 3 -->
+                    <div class="swiper-slide project-card" data-project-id="2">
+                        <h3>Analyzing Students' Mental Health</h3>
+                        <p class="project-description">Does going to university in a different country affect your
+                            mental health?</p>
+                        <div class="project-tech">
+                            <span>SQL</span> <span>Python</span> <span>RedShift</span>
+                        </div>
+                        <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="swiper-slide project-card" data-project-id="3">
+                        <h3>RemitCalc</h3>
+                        <p class="project-description">Full-stack application tracking real-time and historical currency
+                            exchange rates from Nepal Rastra Bank</p>
+                        <div class="project-tech">
+                            <span>React</span> <span>Express.js</span> <span>REST API</span> <span>Axios</span>
+                        </div>
+                        <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                    </div>
                 </div>
-                <button class="cta-button primary view-project-btn">[ View Project ]</button>
+                <div class="swiper-pagination"></div>
             </div>
+        </section>
 
-            <!-- Existing Project 2 -->
-            <div class="swiper-slide project-card" data-project-id="1">
-                <h3>Greenhouse Monitoring App</h3>
-                <p class="project-description">An IoT solution visualizing sensor data and automating greenhouse control via AWS and Axios</p>
-                <div class="project-tech">
-                    <span>React</span> <span>Bootstrap</span> <span>AWS S3</span> <span>DynamoDB</span>
+        <!-- Albums Section -->
+        <section id="albums">
+            <h2>ALBUMS</h2>
+            <p class="section-description"><em>
+                    So many favorite pictures yet to be taken.<br>
+                    But before we speak of impermanence,<br>
+                    before we mourn the moments that were never ours,<br>
+                    let’s just say:<br><br>
+                    this is all that remains of you,<br>
+                    and all that remains of me,<br>
+                    frozen smiles,<br>
+                    mere pictures,<br>
+                    trying to outlive what we couldn’t.
+                </em></p>
+
+            <div class="album-grid">
+                <div class="album-folder" data-album-id="0">
+                    <img src="assets/sky1.png" alt="Album 1" class="album-cover">
+                    <h3>I Wandered Through the Light</h3>
+                    <p>Does the sky remember me? </p>
                 </div>
-                <button class="cta-button primary view-project-btn">[ View Project ]</button>
-            </div>
-
-            <!-- Existing Project 3 -->
-            <div class="swiper-slide project-card" data-project-id="2">
-                <h3>Analyzing Students' Mental Health</h3>
-                <p class="project-description">Does going to university in a different country affect your mental health?</p>
-                <div class="project-tech">
-                    <span>SQL</span> <span>Python</span> <span>RedShift</span>
+                <div class="album-folder" data-album-id="1">
+                    <img src="assets/place3.png" alt="Album 2" class="album-cover">
+                    <h3>The City Is So Full of Ghosts</h3>
+                    <p>Been away from home so long, nowhere feels like home</p>
                 </div>
-                <button class="cta-button primary view-project-btn">[ View Project ]</button>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="swiper-slide project-card" data-project-id="3">
-                <h3>RemitCalc</h3>
-                <p class="project-description">Full-stack application tracking real-time and historical currency exchange rates from Nepal Rastra Bank</p>
-                <div class="project-tech">
-                    <span>React</span> <span>Express.js</span> <span>REST API</span> <span>Axios</span>
+                <div class="album-folder" data-album-id="2">
+                    <img src="assets/people4.png" alt="Album 3" class="album-cover">
+                    <h3>Is this home?</h3>
+                    <p>Hugs and loves</p>
                 </div>
-                <button class="cta-button primary view-project-btn">[ View Project ]</button>
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-</section>
-
- <!-- Albums Section -->
-<section id="albums">
-    <h2>ALBUMS</h2>
-    <p class="section-description"><em>
-        So many favorite pictures yet to be taken.<br>
-        But before we speak of impermanence,<br>
-        before we mourn the moments that were never ours,<br>
-        let’s just say:<br><br>
-        this is all that remains of you,<br>
-        and all that remains of me,<br>
-        frozen smiles,<br>
-        mere pictures,<br>
-        trying to outlive what we couldn’t.
-    </em></p>
-    
-     <div class="album-grid">
-            <div class="album-folder" data-album-id="0">
-                <img src="assets/sky1.png" alt="Album 1" class="album-cover">
-                <h3>I Wandered Through the Light</h3>
-                <p>Does the sky remember me? </p>
-            </div>
-            <div class="album-folder" data-album-id="1">
-                <img src="assets/place3.png" alt="Album 2" class="album-cover">
-                <h3>The City Is So Full of Ghosts</h3>
-                <p>Been away from home so long, nowhere feels like home</p>
-            </div>
-            <div class="album-folder" data-album-id="2">
-                <img src="assets/people4.png" alt="Album 3" class="album-cover">
-                <h3>Is this home?</h3>
-                <p>Hugs and loves</p>
-            </div>
-            <div class="album-folder" data-album-id="3">
-                <img src="assets/chiya1.png" alt="Album 4" class="album-cover">
-                <h3>Ode to a Hungry Soul</h3>
-                <p>Food has never been my friend but I try to make peace with hunger</p>
-            </div>
-        </div>
-        
-
-<!-- Writings Section -->
-<section id="writings">
-    <h2>WRITINGS</h2>
-    <div class="writing-categories">
-        <div class="writing-category">
-            <h3 class="category-title">
-                <span>Musings</span>
-                <i class="fas fa-chevron-down toggle-icon"></i>
-            </h3>
-            <div class="category-content">
-                <div class="writing-item">
-                    <h4>A Quiet Evening</h4>
-                    <p>Reflections on solitude and creativity...</p>
-                    <button class="open-writing-modal" data-title="A Quiet Evening" data-body="In the quiet moments of the evening, when the world slows down and the mind finds space to breathe, creativity often emerges.">Read More</button>
+                <div class="album-folder" data-album-id="3">
+                    <img src="assets/chiya1.png" alt="Album 4" class="album-cover">
+                    <h3>Ode to a Hungry Soul</h3>
+                    <p>Food has never been my friend but I try to make peace with hunger</p>
                 </div>
             </div>
-        </div>
-        <div class="writing-category">
-            <h3 class="category-title">
-                <span>Not-Musings</span>
-                <i class="fas fa-chevron-down toggle-icon"></i>
-            </h3>
-            <div class="category-content">
-                <div class="writing-item">
-                    <h4>Where are we headed?</h4>
-                    <p>AI ethics..</p>
-                    <button class="open-writing-modal" data-title="AI ethics" data-body="Building reliable data systems requires adherence to key principles: designing for scalability, ensuring data quality, implementing proper monitoring, and maintaining clear documentation.">Read More</button>
+
+
+            <!-- Writings Section -->
+            <section id="writings">
+                <h2>WRITINGS</h2>
+                <div class="writing-categories">
+                    <div class="writing-category">
+                        <h3 class="category-title">
+                            <span>Musings</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </h3>
+                        <div class="category-content">
+                            <div class="writing-item">
+                                <h4>A Quiet Evening</h4>
+                                <p>Reflections on solitude and creativity...</p>
+                                <button class="open-writing-modal" data-title="A Quiet Evening"
+                                    data-body="In the quiet moments of the evening, when the world slows down and the mind finds space to breathe, creativity often emerges.">Read
+                                    More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="writing-category">
+                        <h3 class="category-title">
+                            <span>Not-Musings</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </h3>
+                        <div class="category-content">
+                            <div class="writing-item">
+                                <h4>Where are we headed?</h4>
+                                <p>AI ethics..</p>
+                                <button class="open-writing-modal" data-title="AI ethics"
+                                    data-body="Building reliable data systems requires adherence to key principles: designing for scalability, ensuring data quality, implementing proper monitoring, and maintaining clear documentation.">Read
+                                    More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wordscreams Section -->
+            <section id="wordscreams">
+                <h2>WORDSCREAMS</h2>
+                <p class="section-description">I like Twitter. I like words. I like saying things before I overthink
+                    them.<br>
+                    But I need somewhere quieter... No noise unless I make it. </p>
+                <div class="wordscreams-container">
+                    <div class="compose-scream">
+                        <div class="compose-area">
+                            <div class="avatar">P</div>
+                            <div class="compose-input">
+                                <textarea id="screamInput" class="scream-textarea" placeholder="What's on your mind?"
+                                    maxlength="280"></textarea>
+                            </div>
+                        </div>
+                        <div class="compose-actions">
+                            <span id="charCount" class="char-count">0/280</span>
+                            <button id="screamBtn" class="scream-button" disabled>Scream</button>
+                        </div>
+                    </div>
+                    <div id="screamsFeed" class="screams-feed">
+                        <div class="empty-state">
+                            <p>No wordscreams yet. Be the first to share your thoughts!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2>CONTACT</h2>
+                <div class="contact-container">
+                    <p class="contact-intro">I'm currently seeking new opportunities. Feel free to reach out!</p>
+                    <div class="contact-links">
+                        <a href="mailto:pallavipaudel@gmail.com" class="cta-button">[ Email ]</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project Modal -->
+            <div id="projectModal" class="modal">
+                <div class="modal-content project-modal-content">
+                    <span class="close-button">&times;</span>
+                    <div class="project-modal-body">
+                        <div class="project-modal-image-container">
+                            <img id="projectModalImage" src="" alt="">
+                        </div>
+                        <div class="project-modal-details">
+                            <h3 id="projectModalTitle"></h3>
+                            <p id="projectModalDescription"></p>
+                            <div id="projectModalTech" class="project-tech"></div>
+                        </div>
+                    </div>
+                    <div class="project-modal-navigation">
+                        <button id="prevProjectBtn" class="nav-arrow">‹</button>
+                        <button id="nextProjectBtn" class="nav-arrow">›</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- Wordscreams Section -->
-<section id="wordscreams">
-    <h2>WORDSCREAMS</h2>
-    <p class="section-description">I like Twitter. I like words. I like saying things before I overthink them.<br>
-        But I need somewhere quieter... No noise unless I make it. </p>
-    <div class="wordscreams-container">
-        <div class="compose-scream">
-            <div class="compose-area">
-                <div class="avatar">P</div>
-                <div class="compose-input">
-                    <textarea id="screamInput" class="scream-textarea" placeholder="What's on your mind?" maxlength="280"></textarea>
+            <!-- Album Modal -->
+            <div id="albumModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3 id="albumModalTitle"></h3>
+                    <div id="albumGallery" class="album-gallery"></div>
+                    <div class="album-navigation">
+                        <button id="prevAlbumBtn" class="nav-arrow">‹</button>
+                        <button id="nextAlbumBtn" class="nav-arrow">›</button>
+                    </div>
                 </div>
             </div>
-            <div class="compose-actions">
-                <span id="charCount" class="char-count">0/280</span>
-                <button id="screamBtn" class="scream-button" disabled>Scream</button>
+            <!-- Writing Modal -->
+            <div id="writingModal" class="modal">
+                <div class="modal-content writing-modal-content">
+                    <span class="close-button">&times;</span>
+                    <div class="writing-modal-header">
+                        <h3 id="modalTitle"></h3>
+                        <div class="writing-date">Today</div>
+                    </div>
+                    <div id="modalBody" class="writing-modal-body"></div>
+                    <div class="writing-modal-footer">
+                        <button class="cta-button">Save Entry</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div id="screamsFeed" class="screams-feed">
-            <div class="empty-state">
-                <p>No wordscreams yet. Be the first to share your thoughts!</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Contact Section -->
-<section id="contact">
-    <h2>CONTACT</h2>
-    <div class="contact-container">
-        <p class="contact-intro">I'm currently seeking new opportunities. Feel free to reach out!</p>
-        <div class="contact-links">
-            <a href="mailto:pallavipaudel@gmail.com" class="cta-button">[ Email ]</a>
-        </div>
-    </div>
-</section>
+            <!-- Scroll to Top Button -->
+            <button id="scrollToTop" class="scroll-to-top">↑</button>
 
-<!-- Project Modal -->
-<div id="projectModal" class="modal">
-    <div class="modal-content project-modal-content">
-        <span class="close-button">&times;</span>
-        <div class="project-modal-body">
-            <div class="project-modal-image-container">
-                <img id="projectModalImage" src="" alt="">
-            </div>
-            <div class="project-modal-details">
-                <h3 id="projectModalTitle"></h3>
-                <p id="projectModalDescription"></p>
-                <div id="projectModalTech" class="project-tech"></div>
-            </div>
-        </div>
-        <div class="project-modal-navigation">
-            <button id="prevProjectBtn" class="nav-arrow">‹</button>
-            <button id="nextProjectBtn" class="nav-arrow">›</button>
-        </div>
-    </div>
-</div>
-
-<!-- Album Modal -->
-<div id="albumModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h3 id="albumModalTitle"></h3>
-        <div id="albumGallery" class="album-gallery"></div>
-        <div class="album-navigation">
-            <button id="prevAlbumBtn" class="nav-arrow">‹</button>
-            <button id="nextAlbumBtn" class="nav-arrow">›</button>
-        </div>
-    </div>
-</div>
-<!-- Writing Modal -->
-<div id="writingModal" class="modal">
-    <div class="modal-content writing-modal-content">
-        <span class="close-button">&times;</span>
-        <div class="writing-modal-header">
-            <h3 id="modalTitle"></h3>
-            <div class="writing-date">Today</div>
-        </div>
-        <div id="modalBody" class="writing-modal-body"></div>
-        <div class="writing-modal-footer">
-            <button class="cta-button">Save Entry</button>
-        </div>
-    </div>
-</div>
-
-<!-- Scroll to Top Button -->
-<button id="scrollToTop" class="scroll-to-top">↑</button>
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="script.js"></script>
+            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+            <script src="script.js"></script>
 </body>
+
 </html>
