@@ -1763,6 +1763,57 @@ section {
   flex-wrap: wrap;
 }
 
+/* Social Icons in Contact Section */
+.social-icons-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.social-icons-container h3 {
+  font-family: var(--font-primary);
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  transition: var(--transition-smooth);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(147, 112, 219, 0.1); /* subtle accent-colored background */
+}
+
+.social-icons a:hover {
+  color: var(--accent-color);
+  transform: translateY(-3px);
+  background: rgba(147, 112, 219, 0.2);
+  box-shadow: 0 5px 15px var(--accent-color-glow);
+}
+
+/* Specific icon colors on hover */
+.social-icons a:hover .fa-github { color: #333; }
+.social-icons a:hover .fa-linkedin-in { color: #0077b5; }
+.social-icons a:hover .fa-instagram { 
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.social-icons a:hover .fa-twitter { color: #1DA1F2; }
+
 /* --- FOOTER --- */
 footer {
   text-align: center;
