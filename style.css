@@ -92,29 +92,31 @@ a:hover {
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  padding: 1rem 0 0; /* Reduced top padding */
+  padding: 0;
   z-index: 1000;
   box-shadow: var(--shadow-medium);
 }
 
 .sidebar-logo {
-  padding: 0 1rem 1rem; /* Reduced bottom padding */
+  padding: 1.5rem;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 1rem;
 }
 
 .sidebar-logo img {
-  height: 160px; /* Much larger logo */
-  width: auto;
+  max-width: 80%;
+  height: auto;
+  max-height: 80px;
   display: block;
   margin: 0 auto;
+  transition: var(--transition-smooth);
 }
 
 .sidebar-nav-list {
   list-style: none;
   flex-grow: 1;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 .sidebar-nav-link {
@@ -218,7 +220,7 @@ a:hover {
   position: fixed;
   top: 0;
   right: 0;
-  width: 320px; /* Slightly wider for better logo display */
+  width: 350px;
   height: 100vh;
   background: var(--card-bg);
   border-left: 1px solid var(--border-color);
@@ -226,6 +228,7 @@ a:hover {
   transform: translateX(100%);
   transition: var(--transition-smooth);
   z-index: 1500;
+  box-shadow: var(--shadow-heavy);
 }
 
 .slide-menu.active {
@@ -236,14 +239,14 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem; /* Better padding for alignment */
+  padding: 1.5rem;
   border-bottom: 1px solid var(--border-color);
   min-height: 80px; /* Ensure consistent height */
 }
 
 .slide-menu-header img {
-  height: 140px; /* Much larger logo */
-  width: auto;
+  max-width: 60%;
+  max-height: 60px;
   display: block;
 }
 
@@ -317,91 +320,32 @@ a:hover {
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 1024px) {
   .sidebar-logo img {
-    height: 140px; /* Larger for tablets */
+    max-height: 70px;
   }
   .slide-menu-header img {
-    height: 120px; /* Larger for tablets */
-  }
-  .slide-menu {
-    width: 300px;
-  }
-  .menu-toggle {
-    right: 2rem;
-  }
-  .dark-mode-toggle-visible {
-    right: 6.5rem;
+    max-height: 50px;
   }
 }
 
 @media (max-width: 768px) {
+  .sidebar-logo {
+    padding: 1rem;
+  }
   .sidebar-logo img {
-    height: 120px; /* Larger for mobile */
-  }
-  .slide-menu-header img {
-    height: 100px; /* Larger for mobile */
-  }
-  .slide-menu {
-    width: 280px;
-  }
-  .menu-toggle,
-  .dark-mode-toggle-visible {
-    top: 1.5rem;
-    width: 55px;
-    height: 55px;
-  }
-  .menu-toggle {
-    right: 1.5rem;
-  }
-  .dark-mode-toggle-visible {
-    right: 6rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .sidebar-logo img {
-    height: 100px; /* Still larger for small phones */
-  }
-  .slide-menu-header img {
-    height: 80px; /* Still larger for small phones */
-  }
-  .slide-menu {
-    width: 260px;
+    max-height: 60px;
   }
   .slide-menu-header {
     padding: 1rem;
   }
+  .slide-menu-header img {
+    max-height: 40px;
+  }
   .menu-toggle,
   .dark-mode-toggle-visible {
     top: 1.5rem;
-    width: 50px;
-    height: 50px;
   }
   .menu-toggle {
     right: 1.5rem;
-  }
-  .dark-mode-toggle-visible {
-    right: 5.5rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .sidebar-logo img {
-    height: 80px; /* Minimum readable size */
-  }
-  .slide-menu-header img {
-    height: 70px; /* Minimum readable size */
-  }
-  .slide-menu {
-    width: 240px;
-  }
-  .menu-toggle,
-  .dark-mode-toggle-visible {
-    top: 1rem;
-    width: 45px;
-    height: 45px;
-  }
-  .menu-toggle {
-    right: 1rem;
   }
   .dark-mode-toggle-visible {
     right: 5rem;
