@@ -92,20 +92,20 @@ a:hover {
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 0 0; /top padding */
+  padding: 1rem 0 0; /* Reduced top padding */
   z-index: 1000;
   box-shadow: var(--shadow-medium);
 }
 
 .sidebar-logo {
-  padding: 0 1rem 1.5rem; /bottom padding */
+  padding: 0 1rem 1rem; /* Reduced bottom padding */
   text-align: center;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 1rem;
 }
 
 .sidebar-logo img {
-  height: 108px; /* 3x larger (36px × 3) */
+  height: 160px; /* Much larger logo */
   width: auto;
   display: block;
   margin: 0 auto;
@@ -171,8 +171,8 @@ a:hover {
 /* --- RIGHT SLIDE MENU --- */
 .menu-toggle {
   position: fixed;
-  top: 2.5rem; /* Lower position */
-  right: 3rem; /* More spacing from edge */
+  top: 2rem; /* Aligned with dark mode toggle */
+  right: 2rem; /* Consistent spacing */
   z-index: 2000;
   width: 60px;
   height: 60px;
@@ -218,7 +218,7 @@ a:hover {
   position: fixed;
   top: 0;
   right: 0;
-  width: 280px; /* Slightly narrower */
+  width: 320px; /* Slightly wider for better logo display */
   height: 100vh;
   background: var(--card-bg);
   border-left: 1px solid var(--border-color);
@@ -236,12 +236,13 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 1.5rem; /* Better padding for alignment */
   border-bottom: 1px solid var(--border-color);
+  min-height: 80px; /* Ensure consistent height */
 }
 
 .slide-menu-header img {
-  height: 96px; 
+  height: 140px; /* Much larger logo */
   width: auto;
   display: block;
 }
@@ -253,6 +254,11 @@ a:hover {
   color: var(--text-color);
   cursor: pointer;
   transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 }
 
 .close-menu:hover {
@@ -283,14 +289,14 @@ a:hover {
 
 .dark-mode-toggle-visible {
   position: fixed;
-  top: 2rem;
-  right: 6rem;
+  top: 2rem; /* Same as menu toggle */
+  right: 7rem; /* Proper spacing from menu toggle */
   z-index: 2000;
   background: var(--accent-color);
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px; /* Same size as menu toggle */
+  height: 60px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -308,36 +314,43 @@ a:hover {
   font-size: 1.5rem;
 }
 
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 1024px) {
   .sidebar-logo img {
-    height: 120px; /* 3x tablet size */
+    height: 140px; /* Larger for tablets */
   }
   .slide-menu-header img {
-    height: 108px; /* 3x tablet size */
+    height: 120px; /* Larger for tablets */
+  }
+  .slide-menu {
+    width: 300px;
   }
   .menu-toggle {
-    right: 2.5rem;
+    right: 2rem;
   }
   .dark-mode-toggle-visible {
-    right: 7rem;
+    right: 6.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .sidebar-logo img {
-    height: 96px; /* 3x mobile size */
+    height: 120px; /* Larger for mobile */
   }
   .slide-menu-header img {
-    height: 84px; /* 3x mobile size */
+    height: 100px; /* Larger for mobile */
+  }
+  .slide-menu {
+    width: 280px;
   }
   .menu-toggle,
   .dark-mode-toggle-visible {
-    top: 2rem;
+    top: 1.5rem;
     width: 55px;
     height: 55px;
   }
   .menu-toggle {
-    right: 2rem;
+    right: 1.5rem;
   }
   .dark-mode-toggle-visible {
     right: 6rem;
@@ -346,14 +359,20 @@ a:hover {
 
 @media (max-width: 480px) {
   .sidebar-logo img {
-    height: 84px; /* 3x small phone size */
+    height: 100px; /* Still larger for small phones */
   }
   .slide-menu-header img {
-    height: 72px; /* 3x small phone size */
+    height: 80px; /* Still larger for small phones */
+  }
+  .slide-menu {
+    width: 260px;
+  }
+  .slide-menu-header {
+    padding: 1rem;
   }
   .menu-toggle,
   .dark-mode-toggle-visible {
-    top: 1.75rem;
+    top: 1.5rem;
     width: 50px;
     height: 50px;
   }
@@ -361,27 +380,32 @@ a:hover {
     right: 1.5rem;
   }
   .dark-mode-toggle-visible {
-    right: 5rem;
+    right: 5.5rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .sidebar-logo img {
-    height: 28px; /* Extra compact for small phones */
+    height: 80px; /* Minimum readable size */
   }
   .slide-menu-header img {
-    height: 24px;
+    height: 70px; /* Minimum readable size */
+  }
+  .slide-menu {
+    width: 240px;
   }
   .menu-toggle,
   .dark-mode-toggle-visible {
     top: 1rem;
-    width: 44px;
-    height: 44px;
+    width: 45px;
+    height: 45px;
+  }
+  .menu-toggle {
+    right: 1rem;
   }
   .dark-mode-toggle-visible {
-    right: 4rem;
+    right: 5rem;
   }
-}
 
 /* --- MAIN CONTENT --- */
 .main-content {
