@@ -92,31 +92,29 @@ a:hover {
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 1rem 0 0; /* Top padding only */
   z-index: 1000;
   box-shadow: var(--shadow-medium);
 }
 
 .sidebar-logo {
-  padding: 1.5rem;
+  padding: 0 1rem 1rem; /* Tight padding */
   text-align: center;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 1rem;
 }
 
 .sidebar-logo img {
-  max-width: 80%;
-  height: auto;
-  max-height: 80px;
+  height: 36px; /* Fixed compact size */
+  width: auto;
   display: block;
   margin: 0 auto;
-  transition: var(--transition-smooth);
 }
 
 .sidebar-nav-list {
   list-style: none;
   flex-grow: 1;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 .sidebar-nav-link {
@@ -220,7 +218,7 @@ a:hover {
   position: fixed;
   top: 0;
   right: 0;
-  width: 350px;
+  width: 280px; /* Slightly narrower */
   height: 100vh;
   background: var(--card-bg);
   border-left: 1px solid var(--border-color);
@@ -228,7 +226,6 @@ a:hover {
   transform: translateX(100%);
   transition: var(--transition-smooth);
   z-index: 1500;
-  box-shadow: var(--shadow-heavy);
 }
 
 .slide-menu.active {
@@ -239,15 +236,16 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 .slide-menu-header img {
-  max-width: 60%;
-  max-height: 60px;
+  height: 32px; /* Slightly smaller than sidebar */
+  width: auto;
   display: block;
 }
+
 
 .close-menu {
   background: none;
@@ -314,32 +312,56 @@ a:hover {
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
   .sidebar-logo img {
-    max-height: 70px;
+    height: 40px; /* Fixed height for tablet */
+    max-height: none; /* Remove max-height restriction */
   }
   .slide-menu-header img {
-    max-height: 50px;
+    height: 36px; /* Slightly smaller than sidebar */
+    max-height: none;
   }
 }
 
 @media (max-width: 768px) {
   .sidebar-logo {
-    padding: 1rem;
+    padding: 0.75rem 1rem; /* Tighter padding */
   }
   .sidebar-logo img {
-    max-height: 60px;
+    height: 32px; /* Consistent fixed height */
+    max-height: none;
   }
   .slide-menu-header {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
   }
   .slide-menu-header img {
-    max-height: 40px;
+    height: 28px; /* Matching compact size */
+    max-height: none;
   }
   .menu-toggle,
   .dark-mode-toggle-visible {
-    top: 1.5rem;
+    top: 1.25rem; /* Better aligned with compact logo */
+    width: 50px; /* Slightly smaller */
+    height: 50px;
   }
   .dark-mode-toggle-visible {
-    right: 5rem;
+    right: 4.5rem; /* Better spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-logo img {
+    height: 28px; /* Extra compact for small phones */
+  }
+  .slide-menu-header img {
+    height: 24px;
+  }
+  .menu-toggle,
+  .dark-mode-toggle-visible {
+    top: 1rem;
+    width: 44px;
+    height: 44px;
+  }
+  .dark-mode-toggle-visible {
+    right: 4rem;
   }
 }
 
