@@ -81,66 +81,56 @@ a:hover {
   color: var(--accent-color-glow);
 }
 
-/* Fixed main Logo  */
-.fixed-logo {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  width: auto;
-  max-width: 300px;
+/* Top main Logo */
+.top-logo-container {
+  width: 100%;
   text-align: center;
-  pointer-events: none; /* Allows clicks to pass through */
-  mix-blend-mode: luminosity;
+  padding: 20px 0;
+  background-color: var(--bg-color);
+  position: relative;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.top-logo {
+  max-width: 80%;
+  height: auto;
+  max-height: 120px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 10px var(--accent-color-glow));
   transition: all 0.3s ease;
 }
 
-.fixed-logo img {
-  height: 60px; /* Fixed height */
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px var(--accent-color-glow));
-}
-
-/* Dark/Light Mode Adaptations */
-.dark-mode .fixed-logo img {
+/* Theme Adaptations */
+.dark-mode .top-logo {
   filter: drop-shadow(0 0 15px rgba(147, 112, 219, 0.7));
 }
 
-.light-mode .fixed-logo img {
+.light-mode .top-logo {
   filter: drop-shadow(0 0 8px rgba(147, 112, 219, 0.4));
 }
 
-/* Adjust other fixed elements to avoid overlap */
-.sidebar-nav {
-  top: 100px; /* Push sidebar down below logo */
-}
-
-.menu-toggle {
-  top: 30px; /* Position below logo */
-}
-
-.dark-mode-toggle-visible {
-  top: 30px; /* Align with menu button */
-}
-
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .fixed-logo {
-      max-width: 200px;
-      top: 15px;
-  }
-  .fixed-logo img {
-      height: 50px;
-  }
-  
-  .sidebar-nav {
-      top: 80px;
+@media (max-width: 1024px) {
+  .top-logo {
+      max-height: 100px;
   }
 }
 
+@media (max-width: 768px) {
+  .top-logo {
+      max-height: 80px;
+      max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-logo {
+      max-height: 60px;
+  }
+}
 
 
 /* --- LEFT SIDEBAR NAVIGATION --- */
