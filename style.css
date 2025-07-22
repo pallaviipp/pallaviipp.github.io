@@ -151,25 +151,6 @@ a:hover {
   50% { opacity: 0.5; }
 }
 
-.sidebar-social {
-  text-align: center;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  padding: 1.5rem;
-}
-
-.sidebar-social a {
-  font-size: 1.5rem;
-  color: var(--text-color);
-  transition: var(--transition-smooth);
-}
-
-.sidebar-social a:hover {
-  color: var(--accent-color);
-  transform: scale(1.2);
-}
-
 /* --- RIGHT SLIDE MENU --- */
 .menu-toggle {
   position: fixed;
