@@ -1,24 +1,24 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { 
-    getFirestore, 
-    collection, 
-    addDoc, 
-    query, 
-    orderBy, 
-    onSnapshot, 
-    doc, 
-    updateDoc, 
-    arrayUnion, 
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    onSnapshot,
+    doc,
+    updateDoc,
+    arrayUnion,
     arrayRemove,
     increment,
     Timestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { 
-    getAuth, 
-    onAuthStateChanged, 
-    signInAnonymously, 
-    GoogleAuthProvider, 
-    signInWithPopup 
+import {
+    getAuth,
+    onAuthStateChanged,
+    signInAnonymously,
+    GoogleAuthProvider,
+    signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -85,21 +85,21 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 0,
             title: "I Wandered Through the Light",
             images: [
-                { 
-                    src: "assets/sky1.png", 
-                    caption: "Does the sky remember me?" 
+                {
+                    src: "assets/sky1.png",
+                    caption: "Does the sky remember me?"
                 },
-                { 
-                    src: "assets/sky2.png", 
-                    caption: "Maybe this will be foreign too" 
+                {
+                    src: "assets/sky2.png",
+                    caption: "Maybe this will be foreign too"
                 },
-                { 
-                    src: "assets/sky3.png", 
-                    caption: "Golaghat, clicked by Baba <3" 
+                {
+                    src: "assets/sky3.png",
+                    caption: "Golaghat, clicked by Baba <3"
                 },
-                { 
-                    src: "assets/sky4.png", 
-                    caption: "Pulchowk ground, after assessment" 
+                {
+                    src: "assets/sky4.png",
+                    caption: "Pulchowk ground, after assessment"
                 }
             ]
         },
@@ -107,21 +107,21 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 1,
             title: "The City Is So Full of Ghosts",
             images: [
-                { 
-                    src: "assets/place3.png", 
-                    caption: "Nowhere feels like home" 
+                {
+                    src: "assets/place3.png",
+                    caption: "Nowhere feels like home"
                 },
-                { 
-                    src: "assets/place1.png", 
-                    caption: "NY Eve, 2021" 
+                {
+                    src: "assets/place1.png",
+                    caption: "NY Eve, 2021"
                 },
-                { 
-                    src: "assets/place2.png", 
-                    caption: "Dhungedhara, Dhobighar" 
+                {
+                    src: "assets/place2.png",
+                    caption: "Dhungedhara, Dhobighar"
                 },
-                { 
-                    src: "assets/place4.png", 
-                    caption: "Narayani" 
+                {
+                    src: "assets/place4.png",
+                    caption: "Narayani"
                 }
             ]
         },
@@ -129,27 +129,27 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 2,
             title: "Is this home?",
             images: [
-                { 
-                    src: "assets/people4.png", 
-                    caption: "Hugs and loves" 
+                {
+                    src: "assets/people4.png",
+                    caption: "Hugs and loves"
                 },
-                { 
-                    src: "assets/people1.png", 
-                    caption: "Sm love, always" 
+                {
+                    src: "assets/people1.png",
+                    caption: "Sm love, always"
                 },
-                { 
-                    src: "assets/people2.png", 
-                    caption: "New iPad, warehouse, seventh sem" 
-                }          
+                {
+                    src: "assets/people2.png",
+                    caption: "New iPad, warehouse, seventh sem"
+                }
             ]
         },
         {
             id: 3,
             title: "Ode to a Hungry Soul",
             images: [
-                { 
-                    src: "assets/chiya1.png", 
-                    caption: "so many cups of tea, so many days" 
+                {
+                    src: "assets/chiya1.png",
+                    caption: "so many cups of tea, so many days"
                 }
             ]
         }
@@ -302,11 +302,11 @@ document.addEventListener('DOMContentLoaded', function () {
         autoHeight: true,
         allowTouchMove: true,
         on: {
-            slideChange: function() {
+            slideChange: function () {
                 // Update active tab when slide changes
                 const activeIndex = this.activeIndex;
                 const tabButtons = document.querySelectorAll('.tab-button');
-                
+
                 tabButtons.forEach((button, index) => {
                     if (index === activeIndex) {
                         button.classList.add('active');
@@ -357,11 +357,45 @@ document.addEventListener('DOMContentLoaded', function () {
             projectModalTitle.textContent = project.title;
             projectModalDescription.textContent = project.description;
             projectModalTech.innerHTML = '';
+            projectModalLinks.innerHTML = '';
+
             project.tech.forEach(tech => {
                 const span = document.createElement('span');
                 span.textContent = tech;
                 projectModalTech.appendChild(span);
             });
+
+            // GitHub link
+            if (project.github) {
+                const githubLink = document.createElement('a');
+                githubLink.href = project.github;
+                githubLink.target = "_blank";
+                githubLink.className = "project-link";
+                githubLink.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.2 3.2 0 0 0-.9-2.5c3-.3 6-1.5 6-7a5.4 5.4 0 0 0-1.5-3.7 5 5 0 0 0-.1-3.8s-1.2-.4-4 1.5a13.4 13.4 0 0 0-7 0c-2.8-2-4-1.5-4-1.5a5 5 0 0 0-.1 3.8A5.4 5.4 0 0 0 3 12.2c0 5.5 3 6.7 6 7a3.2 3.2 0 0 0-.9 2.5V21"/>
+                    <path d="m16 18 3-3-3-3"/>
+                    <path d="m19 15 3 3-3 3"/>
+                </svg>
+                <span>Visit Project</span>
+                <span class="project-link-arrow">→</span>
+            `;
+                projectModalLinks.appendChild(githubLink);
+            } else if (project.portfolio) {
+                const portfolioLink = document.createElement('a');
+                portfolioLink.href = project.portfolio;
+                portfolioLink.target = "_blank";
+                portfolioLink.className = "project-link";
+                portfolioLink.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+                    <path d="M8.5 8.5v.01"/>
+                </svg>
+                <span>View Portfolio</span>
+                <span class="project-link-arrow">→</span>
+            `;
+                projectModalLinks.appendChild(portfolioLink);
+            }
         }
     }
 
@@ -398,18 +432,18 @@ document.addEventListener('DOMContentLoaded', function () {
         if (album) {
             albumModalTitle.textContent = album.title;
             albumGallery.innerHTML = '';
-            
+
             album.images.forEach(image => {
                 const polaroid = document.createElement('div');
                 polaroid.classList.add('polaroid-container');
-                
+
                 polaroid.innerHTML = `
                     <div class="polaroid">
                         <img src="${image.src}" alt="${image.caption}" class="polaroid-image">
                         <div class="polaroid-caption">${image.caption}</div>
                     </div>
                 `;
-                
+
                 albumGallery.appendChild(polaroid);
             });
         }
@@ -534,34 +568,34 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("UI elements for screaming are not found!");
             return;
         }
-    
+
         const text = screamInput.value.trim();
         if (!text) {
             alert("Scream can't be empty!");
             return;
         }
-    
+
         screamBtn.disabled = true;
         screamBtn.textContent = 'Authenticating...';
-    
+
         try {
             let user = auth.currentUser;
-    
+
             // Trigger sign-in popup if user is not the admin
             if (!user || user.email !== adminEmail) {
                 const provider = new GoogleAuthProvider();
                 const result = await signInWithPopup(auth, provider);
                 user = result.user;
             }
-    
+
             // After auth, explicitly check if the user is the admin
             if (user.email !== adminEmail) {
                 alert("Sorry, you are not allowed to scream (at me), mail me at pallavipaudel@gmail.com ;)");
                 return;
             }
-    
+
             screamBtn.textContent = 'Posting...';
-    
+
             // Timestamp
             const dataToPost = {
                 text: text,
@@ -571,23 +605,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 userId: user.uid,
                 userName: user.displayName || 'Admin'
             };
-    
+
             const screamsCollectionRef = collection(db, "screams");
             await addDoc(screamsCollectionRef, dataToPost);
-    
+
             // Reset input on success
             screamInput.value = '';
             if (charCount) {
                 charCount.textContent = '0/280';
             }
-    
+
         } catch (error) {
-            console.error("Failed to post scream:", error); 
-    
+            console.error("Failed to post scream:", error);
+
             if (error.code === 'auth/popup-blocked') {
                 alert("Popup blocked! Please enable popups for this site to sign in.");
             } else if (error.code === 'auth/popup-closed-by-user') {
-                console.log("Sign-in was cancelled."); 
+                console.log("Sign-in was cancelled.");
             } else {
                 alert("An error occurred while posting. Please check the console and try again.");
             }
@@ -596,13 +630,13 @@ document.addEventListener('DOMContentLoaded', function () {
             screamBtn.textContent = 'Scream';
         }
     }
-    
+
     if (screamBtn) {
         screamBtn.addEventListener('click', postScream);
     }
 
     // Like a scream
-     async function likeScream(screamId, likedBy = []) {
+    async function likeScream(screamId, likedBy = []) {
         const user = auth.currentUser;
         if (!user) {
             alert("Please sign in to like a post.");
@@ -635,40 +669,40 @@ document.addEventListener('DOMContentLoaded', function () {
     // Render all screams
     function renderScreams() {
         if (!screamsFeed) return;
-        
+
         const q = query(collection(db, "screams"), orderBy("timestamp", "desc"));
-        
+
         onSnapshot(q, (querySnapshot) => {
             if (querySnapshot.empty) {
                 screamsFeed.innerHTML = '<div class="empty-state"><p>No wordscreams yet. Be the first to share your thoughts!</p></div>';
                 return;
             }
-    
+
             screamsFeed.innerHTML = '';
             const currentUser = auth.currentUser;
-    
+
             querySnapshot.forEach((doc) => {
                 const scream = { id: doc.id, ...doc.data() };
                 const screamItem = document.createElement('div');
                 screamItem.classList.add('scream-item');
-    
+
                 //handle the timestamp
                 let formattedDate = "Just now";
                 if (scream.timestamp) {
                     // Convert Firestore Timestamp to JavaScript Date
                     const date = scream.timestamp.toDate ? scream.timestamp.toDate() : new Date(scream.timestamp);
                     formattedDate = date.toLocaleDateString('en-US', {
-                        month: 'short', 
-                        day: 'numeric', 
-                        year: 'numeric', 
-                        hour: '2-digit', 
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: '2-digit',
                         minute: '2-digit'
                     });
                 }
-    
+
                 const likedBy = scream.likedBy || [];
                 const isLiked = currentUser && likedBy.includes(currentUser.uid);
-    
+
                 screamItem.innerHTML = `
                     <div class="scream-content">
                         <p class="scream-text">${scream.text}</p>
@@ -683,9 +717,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         </button>
                     </div>
                 `;
-    
+
                 screamsFeed.appendChild(screamItem);
-    
+
                 const likeButton = screamItem.querySelector('.like-button');
                 likeButton.addEventListener('click', () => {
                     likeScream(scream.id, likedBy);
