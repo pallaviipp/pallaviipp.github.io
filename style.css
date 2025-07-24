@@ -884,6 +884,47 @@ section {
   margin-bottom: 1.5rem;
 }
 
+/* Project Links */
+.project-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-primary);
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: rgba(147, 112, 219, 0.1);
+}
+
+.project-link:hover {
+  background: rgba(147, 112, 219, 0.2);
+  transform: translateY(-2px);
+}
+
+.project-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.project-link-arrow {
+  display: inline-block;
+  margin-left: 0.3rem;
+  transform: translateY(1px) rotate(-45deg);
+  transition: var(--transition-smooth);
+}
+
+.project-link:hover .project-link-arrow {
+  transform: translate(3px, 1px) rotate(-45deg);
+}
+
 .project-modal-details .project-tech {
   justify-content: flex-start;
   margin-top: 1rem;

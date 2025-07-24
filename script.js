@@ -48,31 +48,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const projectsData = [
         {
             id: 0,
-            title: "Extensive Breast Cancer Assessment Questionnaire based on known risk factors",
+            title: "how-likely-is-cancer",
             image: "assets/project1.png",
             description: "Developed a scalable platform for breast cancer risk assessment by using Breast Cancer Surveillance Consortium dataset (~1 million params)",
-            tech: ["Python", "SQL", "Streamlit", "Pandas"]
+            tech: ["Python", "SQL", "Streamlit", "Pandas"],
+            github: "https://github.com/pallaviipp/how-likely-is-cancer"
         },
         {
             id: 1,
             title: "Greenhouse Monitoring",
             image: "assets/project2.png",
             description: "Designed and implemented AWS based pipeline to collect sensor data from a prototype greenhouse, enabling real-time monitoring and data analysis.",
-            tech: ["s3", "DynamoDB", "React"]
+            tech: ["s3", "DynamoDB", "React"],
+            github: "https://github.com/pallaviipp/GreenHouse"
         },
         {
             id: 2,
             title: "Analyzing Student's Mental Health",
             image: "assets/project3.png",
             description: "Utilized SQL and Python to analyze student mental health data, providing insights into factors affecting well-being and academic performance.",
-            tech: ["Python", "Pandas", "SQL"]
+            tech: ["Python", "Pandas", "SQL"],
+            portfolio: "https://www.datacamp.com/portfolio/pallavipaudel"
         },
         {
             id: 3,
             title: "RemitCalc",
             image: "assets/project4.png",
             description: "Full-stack application fetching real-time and historical currency exchange rates from Nepal Rastra Bank API with React frontend and Express backend.",
-            tech: ["React", "Express.js", "REST API", "Axios"]
+            tech: ["React", "Express.js", "REST API", "Axios"],
+            github: "https://github.com/pallaviipp/RemittanceCalc"
         }
     ];
 
