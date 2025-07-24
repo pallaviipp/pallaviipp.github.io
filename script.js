@@ -155,6 +155,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     ];
 
+    const certificationsData = [
+        {
+            title: "Associate Data Engineer in SQL",
+            issuer: "DataCamp",
+            date: "2023",
+            credentialId: "ac6654631e504067b2fba4b164578c09",
+            image: "assets/certificates/datacamp-sql.jpg",
+            url: "https://www.datacamp.com/statement-of-accomplishment/track/17a8e2b85616089b18e9a34fa1c759dc3f52c31f"
+        },
+        {
+            title: "AWS Certified Solutions Architect",
+            issuer: "Amazon Web Services",
+            date: "2023",
+            credentialId: "AWS-ASA-1234", // Replace with your actual ID
+            image: "assets/certificates/aws-solutions-architect.jpg"
+        },
+        {
+            title: "Highly Commended Candidate",
+            issuer: "Code First Girls",
+            date: "2022",
+            image: "assets/certificates/code-first-girls.jpg"
+        },
+        {
+            title: "Winner - Zerone Article Writing Competition",
+            issuer: "Zerone",
+            date: "2021",
+            image: "assets/certificates/zerone-writing.jpg"
+        }
+    ];
+
     let currentProjectIndex = 0;
     let currentAlbumIndex = 0;
 
@@ -302,6 +332,9 @@ document.addEventListener('DOMContentLoaded', function () {
         autoHeight: true,
         allowTouchMove: true,
         on: {
+            init: function() {
+                renderCertifications();
+            },
             slideChange: function () {
                 // Update active tab when slide changes
                 const activeIndex = this.activeIndex;
@@ -317,6 +350,38 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+    function renderCertifications() {
+        const certsContainer = document.querySelector('.certifications-grid');
+        if (!certsContainer) return;
+        
+        certsContainer.innerHTML = '';
+        
+        certificationsData.forEach(cert => {
+            const certCard = document.createElement('div');
+            certCard.className = 'certificate-card';
+            
+            certCard.innerHTML = `
+                <img src="${cert.image}" alt="${cert.title}" class="certificate-image">
+                <div class="certificate-details">
+                    <h4 class="certificate-title">${cert.title}</h4>
+                    <div class="certificate-meta">
+                        <span>${cert.issuer}</span> • <span>${cert.date}</span>
+                    </div>
+                    ${cert.credentialId ? `<div class="certificate-id">ID: ${cert.credentialId}</div>` : ''}
+                    ${cert.url ? `<a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-top: 0.5rem; display: inline-block;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Verify Credential
+                    </a>` : ''}
+                </div>
+            `;
+            
+            certsContainer.appendChild(certCard);
+        });
+    } 
 
     const tabButtons = document.querySelectorAll('.tab-button');
     tabButtons.forEach((button, index) => {
