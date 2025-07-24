@@ -492,15 +492,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert("Sorry, only the admin is allowed to post a scream.");
             }
         } catch (error) {
-            console.error("Action failed:", error);
-            if (error.code !== 'auth/popup-closed-by-user') {
-                alert("An error occurred. Please try again.");
-            }
-        } finally {
-            if (screamBtn) {
-                screamBtn.textContent = 'Scream';
-                const length = screamInput.value.length;
-                screamBtn.disabled = length === 0 || length > 280;
+            // Log the specific error code and message to the developer console
+            console.error("You are not authorised to scream :p. If you want to publish your screams (or scream at me), please visit contact section. T_T", {
+                code: error.code,
+                message: error.message
+            });
+        
+            // Provide a more helpful alert to the user
+            if (error.code === 'auth/popup-blocked') {
+                alert("Authentication popup was blocked by the browser. Please allow popups for this site and try again.");
+            } else if (error.code !== 'auth/popup-closed-by-user') {
+                alert("An error occurred. Please check the developer console for more details.");
             }
         }
     }
