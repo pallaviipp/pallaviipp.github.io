@@ -159,29 +159,29 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             title: "Associate Data Engineer in SQL",
             issuer: "DataCamp",
-            date: "2023",
+            date: "Jun, 2025",
             credentialId: "ac6654631e504067b2fba4b164578c09",
-            image: "assets/certificates/datacamp-sql.jpg",
+            image: "assets/certificates/datacamp-sql.png",
             url: "https://www.datacamp.com/statement-of-accomplishment/track/17a8e2b85616089b18e9a34fa1c759dc3f52c31f"
         },
         {
             title: "AWS Certified Solutions Architect",
             issuer: "Amazon Web Services",
-            date: "2023",
-            credentialId: "AWS-ASA-1234", // Replace with your actual ID
-            image: "assets/certificates/aws-solutions-architect.jpg"
+            date: "May, 2025",
+            credentialId: "ac6654631e504067b2fba4b164578c09", 
+            image: "assets/aws-solutions-architect.png"
         },
         {
             title: "Highly Commended Candidate",
             issuer: "Code First Girls",
-            date: "2022",
-            image: "assets/certificates/code-first-girls.jpg"
+            date: "2023",
+            image: "assets/code-first-girls.jpg"
         },
         {
             title: "Winner - Zerone Article Writing Competition",
             issuer: "Zerone",
-            date: "2021",
-            image: "assets/certificates/zerone-writing.jpg"
+            date: "2024",
+            image: "assets/zerone-writing.jpg"
         }
     ];
 
