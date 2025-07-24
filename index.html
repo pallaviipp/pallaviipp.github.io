@@ -394,27 +394,21 @@
             <!-- Wordscreams Section -->
             <section id="wordscreams">
                 <h2>WORDSCREAMS</h2>
+            
                 <p class="section-description">
-                    I post stray thoughts, noise, whatever it is—because it feels urgent. But lately, the internet feels loud in the wrong way. Exposed. Hunted. Haunted. <br>
+                    I post stray thoughts, noise, whatever it is, because it feels urgent. But lately, the internet feels loud in the wrong way. Exposed. Hunted. Haunted. <br>
                     Sometimes you just need to spill your thoughts somewhere. Not for the world. Just… somewhere. Somewhere with the possibility of being seen when someone comes looking for it. <br>
-                    You don't need to hear my wordscreams. But I need to scream them. <br>
+                    You don’t need to hear my wordscreams. But I need to scream them. <br>
                     I speak before I smother the feeling. <br>
                 </p>
                 
-                <!-- Add login form (hidden by default) -->
-                <div id="loginForm" class="login-form" style="display: none;">
-                    <h3>Admin Login</h3>
-                    <input type="email" id="loginEmail" placeholder="Your email" class="login-input">
-                    <input type="password" id="loginPassword" placeholder="Your password" class="login-input">
-                    <button id="loginButton" class="cta-button primary">Login</button>
-                </div>
-                
                 <div class="wordscreams-container">
-                    <div class="compose-scream" id="composeScream" style="display: none;">
+                    <div id="composeScream" class="compose-scream">
                         <div class="compose-area">
                             <div class="avatar">P</div>
                             <div class="compose-input">
-                                <textarea id="screamInput" class="scream-textarea" placeholder="What's on your mind?" maxlength="280"></textarea>
+                                <textarea id="screamInput" class="scream-textarea" placeholder="What's on your mind?"
+                                    maxlength="280"></textarea>
                             </div>
                         </div>
                         <div class="compose-actions">
@@ -423,13 +417,12 @@
                         </div>
                     </div>
                     <div id="screamsFeed" class="screams-feed">
-                        <div class="loading-screams">
-                            <p>Loading screams...</p>
+                        <div class="empty-state">
+                            <p>Loading wordscreams...</p>
                         </div>
                     </div>
                 </div>
             </section>
-
         <!-- Contact Section -->
 <section id="contact">
     <h2>CONTACT</h2>

@@ -1,17 +1,8 @@
-// Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyAqZN4wnF_34d4n7-zoj_Md2u4yerWVAqc",
-    authDomain: "wordscreams.firebaseapp.com",
-    projectId: "wordscreams",
-    storageBucket: "wordscreams.appspot.com",
-    messagingSenderId: "187530605741",
-    appId: "1:187530605741:web:a0fa4656ae76f0deb10224"
-};
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const auth = firebase.auth();
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInAnonymously, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');
@@ -35,11 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const screamBtn = document.getElementById('screamBtn');
     const charCount = document.getElementById('charCount');
     const screamsFeed = document.getElementById('screamsFeed');
-    const composeScream = document.querySelector('.compose-scream');
-    const loginForm = document.querySelector('.login-form');
-    const loginEmail = document.getElementById('loginEmail');
-    const loginPassword = document.getElementById('loginPassword');
-    const loginButton = document.getElementById('loginButton');
 
     // --- Data ---
     const projectsData = [
@@ -413,130 +399,138 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- Wordscreams Functionality ---
-    function checkAuthState() {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                if (composeScream) composeScream.style.display = 'block';
-                if (loginForm) loginForm.style.display = 'none';
-                renderScreams();
-            } else {
-                if (composeScream) composeScream.style.display = 'none';
-                if (loginForm) loginForm.style.display = 'block';
-            }
+    const firebaseConfig = {
+        apiKey: "AIzaSyAqZN4wnF_34d4n7-zoj_Md2u4yerWVAqc",
+        authDomain: "wordscreams.firebaseapp.com",
+        projectId: "wordscreams",
+        storageBucket: "wordscreams.firebasestorage.app",
+        messagingSenderId: "187530605741",
+        appId: "1:187530605741:web:a0fa4656ae76f0deb10224"
+      };
+      
+
+    
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    const adminEmail = "pallavipaudel@gmail.com";
+    
+    // Character counter logic
+    if (screamInput) {
+        screamInput.addEventListener('input', () => {
+            const length = screamInput.value.length;
+            if (charCount) charCount.textContent = `${length}/280`;
+            if (screamBtn) screamBtn.disabled = length === 0 || length > 280;
         });
     }
-
-    // Login function
-    if (loginButton) {
-        loginButton.addEventListener('click', async () => {
-            const email = loginEmail.value;
-            const password = loginPassword.value;
-            
-            try {
-                await auth.signInWithEmailAndPassword(email, password);
-            } catch (error) {
-                console.error("Login error:", error);
-            }
-        });
-    }
-
-    // Character counter
-    function updateCharCount() {
-        const length = screamInput ? screamInput.value.length : 0;
-        if (charCount) charCount.textContent = `${length}/280`;
-        if (screamBtn) screamBtn.disabled = length === 0 || length > 280;
-    }
-
-    if (screamInput) screamInput.addEventListener('input', updateCharCount);
-
-    // Post a new scream
+    
+    // Handle user authentication state
+    auth.onAuthStateChanged((user) => {
+        if (!user) {
+            auth.signInAnonymously().catch((error) => {
+                console.error("Anonymous sign-in failed:", error);
+            });
+        }
+        renderScreams(); // Re-render to update like buttons for the current user
+    });
+    
+    // Post a scream
     async function postScream() {
         const text = screamInput.value.trim();
-        if (!text || text.length > 280) return;
-
+        if (!text) return;
+    
+        if(screamBtn) {
+            screamBtn.disabled = true;
+            screamBtn.textContent = 'Authenticating...';
+        }
+    
         try {
-            const user = auth.currentUser;
-            if (!user) {
-                await auth.signInAnonymously();
+            let user = auth.currentUser;
+    
+            if (!user || user.email !== adminEmail) {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                const result = await auth.signInWithPopup(provider);
+                user = result.user;
             }
-
-            await db.collection("screams").add({
-                text: text,
-                timestamp: new Date().toISOString(),
-                likes: 0,
-                likedBy: [],
-                userId: user ? user.uid : 'anonymous'
-            });
-            
-            if (screamInput) screamInput.value = '';
-            updateCharCount();
+    
+            if (user.email === adminEmail) {
+                if(screamBtn) screamBtn.textContent = 'Posting...';
+                await db.collection("screams").add({
+                    text: text,
+                    timestamp: new Date().toISOString(),
+                    likes: 0,
+                    likedBy: [],
+                });
+                if(screamInput) screamInput.value = '';
+            } else {
+                alert("Sorry, only the admin is allowed to post a scream.");
+            }
         } catch (error) {
-            console.error("Error posting scream:", error);
+            console.error("Action failed:", error);
+            if (error.code !== 'auth/popup-closed-by-user') {
+                alert("An error occurred. Please try again.");
+            }
+        } finally {
+             if(screamBtn) {
+                screamBtn.textContent = 'Scream';
+                const length = screamInput.value.length;
+                screamBtn.disabled = length === 0 || length > 280;
+             }
         }
     }
-
     if (screamBtn) screamBtn.addEventListener('click', postScream);
-
+    
     // Like a scream
-    async function likeScream(screamId, currentLikes, likedBy = []) {
+    async function likeScream(screamId, likedBy = []) {
+        const user = auth.currentUser;
+        if (!user) return;
+    
+        const screamRef = db.collection("screams").doc(screamId);
+        const alreadyLiked = likedBy.includes(user.uid);
+    
         try {
-            const visitorId = localStorage.getItem('visitorId') || 
-                            Math.random().toString(36).substring(2) + 
-                            Date.now().toString(36);
-            localStorage.setItem('visitorId', visitorId);
-
-            const alreadyLiked = likedBy.includes(visitorId);
-            const screamRef = db.collection("screams").doc(screamId);
-            
             if (alreadyLiked) {
                 await screamRef.update({
-                    likes: currentLikes - 1,
-                    likedBy: firebase.firestore.FieldValue.arrayRemove(visitorId)
+                    likes: firebase.firestore.FieldValue.increment(-1),
+                    likedBy: firebase.firestore.FieldValue.arrayRemove(user.uid)
                 });
             } else {
                 await screamRef.update({
-                    likes: currentLikes + 1,
-                    likedBy: firebase.firestore.FieldValue.arrayUnion(visitorId)
+                    likes: firebase.firestore.FieldValue.increment(1),
+                    likedBy: firebase.firestore.FieldValue.arrayUnion(user.uid)
                 });
             }
         } catch (error) {
             console.error("Error liking scream:", error);
         }
     }
-
-    // Render screams from Firestore
+    
+    // Render all screams
     function renderScreams() {
         if (!screamsFeed) return;
-        
-        screamsFeed.innerHTML = '<div class="loading-screams"><p>Loading screams...</p></div>';
-
-        const q = db.collection("screams").orderBy("timestamp", "desc");
-
-        q.onSnapshot((querySnapshot) => {
+        db.collection("screams").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
             if (querySnapshot.empty) {
-                screamsFeed.innerHTML = '<div class="empty-state"><p>No screams yet!</p></div>';
+                screamsFeed.innerHTML = '<div class="empty-state"><p>No wordscreams yet. Be the first to share your thoughts!</p></div>';
                 return;
             }
-
+    
             screamsFeed.innerHTML = '';
-            
+            const currentUser = auth.currentUser;
+    
             querySnapshot.forEach((doc) => {
-                const scream = doc.data();
-                const date = new Date(scream.timestamp);
-                const formattedDate = date.toLocaleDateString('en-US', {
-                    month: 'short',
-                    day: 'numeric',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-                const visitorId = localStorage.getItem('visitorId');
-                const isLiked = visitorId && scream.likedBy && scream.likedBy.includes(visitorId);
-
+                const scream = { id: doc.id, ...doc.data() };
                 const screamItem = document.createElement('div');
                 screamItem.classList.add('scream-item');
+    
+                const date = new Date(scream.timestamp);
+                const formattedDate = date.toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
+                });
+    
+                const likedBy = scream.likedBy || [];
+                const isLiked = currentUser && likedBy.includes(currentUser.uid);
+    
                 screamItem.innerHTML = `
                     <div class="scream-content">
                         <p class="scream-text">${scream.text}</p>
@@ -545,38 +539,30 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="scream-actions">
-                        <button class="like-button ${isLiked ? 'liked' : ''}" 
-                                data-id="${doc.id}" 
-                                data-likes="${scream.likes || 0}">
+                        <button class="like-button ${isLiked ? 'liked' : ''}" data-id="${scream.id}">
                             <i class="fas fa-heart"></i>
                             <span class="like-count">${scream.likes || 0}</span>
                         </button>
                     </div>
                 `;
-                
+    
                 screamsFeed.appendChild(screamItem);
-
-                // Add event listener to like button
+    
                 const likeButton = screamItem.querySelector('.like-button');
-                if (likeButton) {
-                    likeButton.addEventListener('click', () => {
-                        const screamId = likeButton.dataset.id;
-                        const currentLikes = parseInt(likeButton.dataset.likes);
-                        const likedBy = scream.likedBy || [];
-                        likeScream(screamId, currentLikes, likedBy);
-                    });
-                }
+                likeButton.addEventListener('click', () => {
+                    likeScream(scream.id, likedBy);
+                });
             });
         }, (error) => {
             console.error("Error loading screams:", error);
             screamsFeed.innerHTML = '<div class="empty-state"><p>Error loading screams. Please refresh.</p></div>';
         });
     }
+    
+    // Initial call
+    renderScreams();
 
-    // Initialize Wordscreams
-    checkAuthState();
-
-    // Final initialization
+  //final
     setTimeout(() => {
         document.body.classList.add('user-has-scrolled');
         document.body.style.overflow = '';
