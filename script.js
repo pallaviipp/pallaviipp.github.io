@@ -1,8 +1,24 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged, signInAnonymously, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
+import { 
+    getFirestore, 
+    collection, 
+    addDoc, 
+    query, 
+    orderBy, 
+    onSnapshot, 
+    doc, 
+    updateDoc, 
+    arrayUnion, 
+    arrayRemove,
+    increment 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { 
+    getAuth, 
+    onAuthStateChanged, 
+    signInAnonymously, 
+    GoogleAuthProvider, 
+    signInWithPopup 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded and parsed');
@@ -414,7 +430,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const adminEmail = "pallavipaudel@gmail.com";
 
 
-
     // Character counter logic
     if (screamInput) {
         screamInput.addEventListener('input', () => {
@@ -447,21 +462,32 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             let user = auth.currentUser;
 
+            // The admin must sign in to post
             if (!user || user.email !== adminEmail) {
-                const provider = new GoogleAuthProvider(); // CHANGE HERE
-                const result = await signInWithPopup(auth, provider); // CHANGE HERE
+                const provider = new GoogleAuthProvider();
+                const result = await signInWithPopup(auth, provider);
                 user = result.user;
             }
 
             if (user.email === adminEmail) {
                 if (screamBtn) screamBtn.textContent = 'Posting...';
-                await db.collection("screams").add({
+                
+                // CORRECTED SYNTAX: Use collection(db, 'screams')
+                const screamsCollectionRef = collection(db, "screams");
+                
+                // CORRECTED SYNTAX: Use addDoc(collectionRef, data)
+                await addDoc(screamsCollectionRef, {
                     text: text,
                     timestamp: new Date().toISOString(),
                     likes: 0,
                     likedBy: [],
+                    userId: user.uid, // Store the user ID
+                    userName: user.displayName || 'Admin' // Store user display name
                 });
+
                 if (screamInput) screamInput.value = '';
+                if (charCount) charCount.textContent = '0/280';
+
             } else {
                 alert("Sorry, only the admin is allowed to post a scream.");
             }
@@ -481,23 +507,29 @@ document.addEventListener('DOMContentLoaded', function () {
     if (screamBtn) screamBtn.addEventListener('click', postScream);
 
     // Like a scream
-    async function likeScream(screamId, likedBy = []) {
+     async function likeScream(screamId, likedBy = []) {
         const user = auth.currentUser;
-        if (!user) return;
+        if (!user) {
+            alert("Please sign in to like a post.");
+            return;
+        }
 
-        const screamRef = db.collection("screams").doc(screamId);
+        // CORRECTED SYNTAX: Use doc(db, 'collectionName', 'documentId')
+        const screamRef = doc(db, "screams", screamId);
         const alreadyLiked = likedBy.includes(user.uid);
 
         try {
             if (alreadyLiked) {
-                await screamRef.update({
-                    likes: firebase.firestore.FieldValue.increment(-1),
-                    likedBy: firebase.firestore.FieldValue.arrayRemove(user.uid)
+                // CORRECTED SYNTAX: Use updateDoc with arrayRemove and increment
+                await updateDoc(screamRef, {
+                    likes: increment(-1),
+                    likedBy: arrayRemove(user.uid)
                 });
             } else {
-                await screamRef.update({
-                    likes: firebase.firestore.FieldValue.increment(1),
-                    likedBy: firebase.firestore.FieldValue.arrayUnion(user.uid)
+                // CORRECTED SYNTAX: Use updateDoc with arrayUnion and increment
+                await updateDoc(screamRef, {
+                    likes: increment(1),
+                    likedBy: arrayUnion(user.uid)
                 });
             }
         } catch (error) {
@@ -508,7 +540,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Render all screams
     function renderScreams() {
         if (!screamsFeed) return;
-        db.collection("screams").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
+        
+        const q = query(collection(db, "screams"), orderBy("timestamp", "desc"));
+        
+        onSnapshot(q, (querySnapshot) => {
             if (querySnapshot.empty) {
                 screamsFeed.innerHTML = '<div class="empty-state"><p>No wordscreams yet. Be the first to share your thoughts!</p></div>';
                 return;

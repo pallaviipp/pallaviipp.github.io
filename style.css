@@ -1443,28 +1443,7 @@ section {
 }
 
 /* --- WORDSCREAMS SECTION --- */
-.login-form {
-  background-color: var(--card-bg);
-  border-radius: 15px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 400px;
-  text-align: center;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-medium);
-}
 
-.login-input {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-secondary);
-  transition: var(--transition-smooth);
-}
 
 .login-input:focus {
   border-color: var(--accent-color);
