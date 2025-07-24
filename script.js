@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
             issuer: "DataCamp",
             date: "Jun, 2025",
             credentialId: "ac6654631e504067b2fba4b164578c09",
-            image: "assets/certificates/datacamp-sql.png",
+            image: "assets/datacamp-sql.png",
             url: "https://www.datacamp.com/statement-of-accomplishment/track/17a8e2b85616089b18e9a34fa1c759dc3f52c31f"
         },
         {
