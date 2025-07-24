@@ -1,7 +1,29 @@
+// Firebase SDKs functions import
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { 
+    getFirestore, 
+    collection, 
+    addDoc, 
+    query, 
+    orderBy, 
+    onSnapshot, 
+    updateDoc, 
+    doc, 
+    getDoc, 
+    setDoc,
+    arrayUnion,
+    arrayRemove
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { 
+    getAuth, 
+    signInWithEmailAndPassword,
+    signInAnonymously,
+    onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Script loaded successfully!');
 
-    // Remove any existing hash from URL without affecting scroll
     if (window.location.hash) {
         window.history.replaceState(null, null, ' ');
     }
@@ -38,6 +60,25 @@ window.scrollTo({
     const loginPassword = document.getElementById('loginPassword');
     const loginButton = document.getElementById('loginButton');
 
+    window.firebase = { 
+        app,
+        db, 
+        auth, 
+        collection, 
+        addDoc, 
+        query, 
+        orderBy, 
+        onSnapshot, 
+        updateDoc, 
+        doc, 
+        getDoc, 
+        setDoc,
+        arrayUnion,
+        arrayRemove,
+        signInWithEmailAndPassword,
+        signInAnonymously,
+        onAuthStateChanged
+    };
 
     body.style.overflow = '';
     body.style.height = '';
@@ -419,21 +460,32 @@ document.getElementById('nextProjectBtn').addEventListener('click', () => {
     });
 
 /* --- WORDSCREAMS --- */
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyAqZN4wnF_34d4n7-zoj_Md2u4yerWVAqc",
+    authDomain: "wordscreams.firebaseapp.com",
+    projectId: "wordscreams",
+    storageBucket: "wordscreams.appspot.com",
+    messagingSenderId: "187530605741",
+    appId: "1:187530605741:web:a0fa4656ae76f0deb10224"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+
 function checkAuthState() {
-    if (!firebase || !firebase.auth) return;
-    
-    firebase.auth.onAuthStateChanged(auth, (user) => {
-        if (user && user.email === "pallavipaudel@gmail.com") { // Replace with your email
-            // You're logged in - show compose section
+    firebase.onAuthStateChanged(firebase.auth, (user) => {
+        if (user) {
+            // User is signed in
             composeScream.style.display = 'block';
             loginForm.style.display = 'none';
         } else {
-            // Not logged in or not you - hide compose section
+            // User is signed out
             composeScream.style.display = 'none';
-            // Only show login form if it's you visiting (optional)
-            if (window.location.hostname === "pallaviipp.github.io") {
-                loginForm.style.display = 'block';
-            }
+            loginForm.style.display = 'block';
         }
     });
 }
@@ -470,12 +522,20 @@ async function postScream() {
     if (!text || text.length > 280) return;
 
     try {
+        // First check if user is authenticated
+        const user = firebase.auth.currentUser;
+        if (!user) {
+            // If not authenticated, try to sign in anonymously
+            await firebase.signInAnonymously(firebase.auth);
+        }
+
         // Add scream to Firestore
         await firebase.addDoc(firebase.collection(firebase.db, "screams"), {
             text: text,
             timestamp: new Date().toISOString(),
             likes: 0,
-            likedBy: [] // Array to track who liked
+            likedBy: [],
+            userId: user ? user.uid : 'anonymous'
         });
         
         screamInput.value = '';
@@ -491,7 +551,7 @@ if (screamBtn) screamBtn.addEventListener('click', postScream);
 // Like a scream
 async function likeScream(screamId, currentLikes, likedBy = []) {
     try {
-        // Generate a unique visitor ID (simple solution for demo)
+        // Generate a unique visitor ID
         const visitorId = localStorage.getItem('visitorId') || 
                           Math.random().toString(36).substring(2) + 
                           Date.now().toString(36);
@@ -602,6 +662,7 @@ function renderScreams() {
     });
 }
 
+// Initialize
 // Initialize
 if (window.firebase) {
     checkAuthState();
