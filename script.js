@@ -87,15 +87,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 { 
                     src: "assets/sky2.png", 
-                    caption: "Clouds like brushstrokes" 
+                    caption: "Maybe this will be foreign too" 
                 },
                 { 
                     src: "assets/sky3.png", 
-                    caption: "Horizon dreams" 
+                    caption: "Golaghat, clicked by Baba <3" 
                 },
                 { 
                     src: "assets/sky4.png", 
-                    caption: "Golden hour whispers" 
+                    caption: "Pulchowk ground, after assessment" 
                 }
             ]
         },
@@ -109,15 +109,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 { 
                     src: "assets/place1.png", 
-                    caption: "Neon reflections" 
+                    caption: "NY Eve, 2021" 
                 },
                 { 
                     src: "assets/place2.png", 
-                    caption: "Concrete poetry" 
+                    caption: "Dhungedhara, Dhobighar" 
                 },
                 { 
                     src: "assets/place4.png", 
-                    caption: "Lonely streetlights" 
+                    caption: "Narayani" 
                 }
             ]
         },
@@ -130,17 +130,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     caption: "Hugs and loves" 
                 },
                 { 
-                    src: "assets/peole1.png", 
-                    caption: "Shared silence" 
+                    src: "assets/people1.png", 
+                    caption: "Sm love, always" 
                 },
                 { 
                     src: "assets/people2.png", 
-                    caption: "Unposed moments" 
-                },
-                { 
-                    src: "assets/people3.png", 
-                    caption: "Fleeting togetherness" 
-                }
+                    caption: "New iPad, warehouse, seventh sem" 
+                }          
             ]
         },
         {
@@ -149,19 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
             images: [
                 { 
                     src: "assets/chiya1.png", 
-                    caption: "Tea-stained memories" 
-                },
-                { 
-                    src: "assets/food2.png", 
-                    caption: "Comfort in steam" 
-                },
-                { 
-                    src: "assets/food3.png", 
-                    caption: "Taste of nostalgia" 
-                },
-                { 
-                    src: "assets/food4.png", 
-                    caption: "Bittersweet bites" 
+                    caption: "so many cups of tea, so many days" 
                 }
             ]
         }
