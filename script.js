@@ -10,6 +10,7 @@ import {
     updateDoc, 
     arrayUnion, 
     arrayRemove,
+    Timestamp,
     increment 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { 
@@ -451,62 +452,77 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Post a scream
     async function postScream() {
-        const text = screamInput.value.trim();
-        if (!text) return;
-
-        if (screamBtn) {
-            screamBtn.disabled = true;
-            screamBtn.textContent = 'Authenticating...';
+        // Ensure input and button elements are available before proceeding
+        if (!screamInput || !screamBtn) {
+            console.error("UI elements for screaming are not found!");
+            return;
         }
-
+    
+        const text = screamInput.value.trim();
+        if (!text) {
+            alert("Scream can't be empty!");
+            return;
+        }
+    
+        screamBtn.disabled = true;
+        screamBtn.textContent = 'Authenticating...';
+    
         try {
             let user = auth.currentUser;
-
-            // The admin must sign in to post
+    
+            // Trigger sign-in popup if user is not the admin
             if (!user || user.email !== adminEmail) {
                 const provider = new GoogleAuthProvider();
                 const result = await signInWithPopup(auth, provider);
                 user = result.user;
             }
-
-            if (user.email === adminEmail) {
-                if (screamBtn) screamBtn.textContent = 'Posting...';
-                
-                // CORRECTED SYNTAX: Use collection(db, 'screams')
-                const screamsCollectionRef = collection(db, "screams");
-                
-                // CORRECTED SYNTAX: Use addDoc(collectionRef, data)
-                await addDoc(screamsCollectionRef, {
-                    text: text,
-                    timestamp: new Date().toISOString(),
-                    likes: 0,
-                    likedBy: [],
-                    userId: user.uid, // Store the user ID
-                    userName: user.displayName || 'Admin' // Store user display name
-                });
-
-                if (screamInput) screamInput.value = '';
-                if (charCount) charCount.textContent = '0/280';
-
-            } else {
-                alert("Sorry, only the admin is allowed to post a scream.");
+    
+            // After auth, explicitly check if the user is the admin
+            if (user.email !== adminEmail) {
+                alert("Sorry, you are not allowed to scream (at me), mail me at pallavipaudel@gmail.com ;)");
+                return;
             }
+    
+            screamBtn.textContent = 'Posting...';
+    
+            // Timestamp
+            const dataToPost = {
+                text: text,
+                timestamp: Timestamp.fromDate(new Date()), // Best practice for timestamps
+                likes: 0,
+                likedBy: [],
+                userId: user.uid,
+                userName: user.displayName || 'Admin'
+            };
+    
+            const screamsCollectionRef = collection(db, "screams");
+            await addDoc(screamsCollectionRef, dataToPost);
+    
+            // Reset input on success
+            screamInput.value = '';
+            if (charCount) {
+                charCount.textContent = '0/280';
+            }
+    
         } catch (error) {
-            // Log the specific error code and message to the developer console
-            console.error("You are not authorised to scream :p. If you want to publish your screams (or scream at me), please visit contact section. T_T", {
-                code: error.code,
-                message: error.message
-            });
-        
-            // Provide a more helpful alert to the user
+            console.error("Failed to post scream:", error); 
+    
             if (error.code === 'auth/popup-blocked') {
-                alert("Authentication popup was blocked by the browser. Please allow popups for this site and try again.");
-            } else if (error.code !== 'auth/popup-closed-by-user') {
-                alert("An error occurred. Please check the developer console for more details.");
+                alert("Popup blocked! Please enable popups for this site to sign in.");
+            } else if (error.code === 'auth/popup-closed-by-user') {
+                console.log("Sign-in was cancelled."); 
+            } else {
+                alert("An error occurred while posting. Please check the console and try again.");
             }
+        } finally {
+            screamBtn.disabled = false;
+            screamBtn.textContent = 'Scream';
         }
     }
-    if (screamBtn) screamBtn.addEventListener('click', postScream);
+    
+    if (screamBtn) {
+        screamBtn.addEventListener('click', postScream);
+    }
 
     // Like a scream
      async function likeScream(screamId, likedBy = []) {
