@@ -32,6 +32,12 @@ window.scrollTo({
     const screamBtn = document.getElementById('screamBtn');
     const charCount = document.getElementById('charCount');
     const screamsFeed = document.getElementById('screamsFeed');
+    const composeScream = document.getElementById('composeScream');
+    const loginForm = document.getElementById('loginForm');
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    const loginButton = document.getElementById('loginButton');
+
 
     body.style.overflow = '';
     body.style.height = '';
@@ -87,7 +93,7 @@ window.scrollTo({
         },
         {
             id: 3,
-            title: "nom nom",
+            title: "cafes",
             images: ["assets/chiya1.png", "assets/food2.png"]
         }
     ];
@@ -412,62 +418,198 @@ document.getElementById('nextProjectBtn').addEventListener('click', () => {
         }
     });
 
-// The misplaced modal-related code block has been removed.
-
 /* --- WORDSCREAMS --- */
+function checkAuthState() {
+    if (!firebase || !firebase.auth) return;
+    
+    firebase.auth.onAuthStateChanged(auth, (user) => {
+        if (user && user.email === "pallavipaudel@gmail.com") { // Replace with your email
+            // You're logged in - show compose section
+            composeScream.style.display = 'block';
+            loginForm.style.display = 'none';
+        } else {
+            // Not logged in or not you - hide compose section
+            composeScream.style.display = 'none';
+            // Only show login form if it's you visiting (optional)
+            if (window.location.hostname === "pallaviipp.github.io") {
+                loginForm.style.display = 'block';
+            }
+        }
+    });
+}
+
+// Login function
+if (loginButton) {
+    loginButton.addEventListener('click', async () => {
+        const email = loginEmail.value;
+        const password = loginPassword.value;
+        
+        try {
+            await firebase.signInWithEmailAndPassword(firebase.auth, email, password);
+            loginForm.style.display = 'none';
+            composeScream.style.display = 'block';
+        } catch (error) {
+            alert("Login failed: " + error.message);
+            console.error(error);
+        }
+    });
+}
+
+// Character counter
 function updateCharCount() {
     const length = screamInput ? screamInput.value.length : 0;
     if (charCount) charCount.textContent = `${length}/280`;
     if (screamBtn) screamBtn.disabled = length === 0 || length > 280;
 }
 
-function postScream() {
+if (screamInput) screamInput.addEventListener('input', updateCharCount);
+
+// Post a new scream
+async function postScream() {
     const text = screamInput.value.trim();
-    if (text && text.length <= 280) {
-        screams.unshift({
-            id: Date.now(),
+    if (!text || text.length > 280) return;
+
+    try {
+        // Add scream to Firestore
+        await firebase.addDoc(firebase.collection(firebase.db, "screams"), {
             text: text,
-            timestamp: new Date().toLocaleString(),
-            likes: 0
+            timestamp: new Date().toISOString(),
+            likes: 0,
+            likedBy: [] // Array to track who liked
         });
-        localStorage.setItem('screams', JSON.stringify(screams));
-        renderScreams();
+        
         screamInput.value = '';
         updateCharCount();
+    } catch (error) {
+        console.error("Error posting scream:", error);
+        alert("Failed to post scream. Please try again.");
     }
 }
 
+if (screamBtn) screamBtn.addEventListener('click', postScream);
+
+// Like a scream
+async function likeScream(screamId, currentLikes, likedBy = []) {
+    try {
+        // Generate a unique visitor ID (simple solution for demo)
+        const visitorId = localStorage.getItem('visitorId') || 
+                          Math.random().toString(36).substring(2) + 
+                          Date.now().toString(36);
+        localStorage.setItem('visitorId', visitorId);
+
+        // Check if already liked
+        const alreadyLiked = likedBy.includes(visitorId);
+        
+        // Update in Firestore
+        const screamRef = firebase.doc(firebase.db, "screams", screamId);
+        if (alreadyLiked) {
+            // Unlike
+            await firebase.updateDoc(screamRef, {
+                likes: currentLikes - 1,
+                likedBy: firebase.arrayRemove(visitorId)
+            });
+        } else {
+            // Like
+            await firebase.updateDoc(screamRef, {
+                likes: currentLikes + 1,
+                likedBy: firebase.arrayUnion(visitorId)
+            });
+        }
+    } catch (error) {
+        console.error("Error liking scream:", error);
+    }
+}
+
+// Render screams from Firestore
 function renderScreams() {
     if (!screamsFeed) return;
-    screamsFeed.innerHTML = '';
     
-    if (screams.length === 0) {
-        screamsFeed.innerHTML = '<div class="empty-state"><p>No wordscreams yet!</p></div>';
-        return;
-    }
-    
-    screams.forEach(scream => {
-        const screamItem = document.createElement('div');
-        screamItem.classList.add('scream-item');
-        screamItem.innerHTML = `
-            <div class="scream-content">
-                <p>${scream.text}</p>
-                <span class="scream-meta">${scream.timestamp}</span>
-            </div>
-            <div class="scream-actions">
-                <button class="like-button" data-id="${scream.id}">
-                    <i class="fas fa-heart"></i> ${scream.likes}
-                </button>
-            </div>
-        `;
-        screamsFeed.appendChild(screamItem);
+    screamsFeed.innerHTML = '<div class="loading-screams"><p>Loading screams...</p></div>';
+
+    // Query screams ordered by timestamp
+    const q = firebase.query(
+        firebase.collection(firebase.db, "screams"),
+        firebase.orderBy("timestamp", "desc")
+    );
+
+    // Real-time listener
+    firebase.onSnapshot(q, (querySnapshot) => {
+        const screams = [];
+        querySnapshot.forEach((doc) => {
+            screams.push({
+                id: doc.id,
+                ...doc.data()
+            });
+        });
+
+        if (screams.length === 0) {
+            screamsFeed.innerHTML = '<div class="empty-state"><p>No screams yet!</p></div>';
+            return;
+        }
+
+        screamsFeed.innerHTML = '';
+        
+        screams.forEach(scream => {
+            const screamItem = document.createElement('div');
+            screamItem.classList.add('scream-item');
+            
+            // Format date
+            const date = new Date(scream.timestamp);
+            const formattedDate = date.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            // Check if visitor already liked this scream
+            const visitorId = localStorage.getItem('visitorId');
+            const isLiked = visitorId && scream.likedBy && scream.likedBy.includes(visitorId);
+
+            screamItem.innerHTML = `
+                <div class="scream-content">
+                    <p class="scream-text">${scream.text}</p>
+                    <div class="scream-meta">
+                        <span>${formattedDate}</span>
+                    </div>
+                </div>
+                <div class="scream-actions">
+                    <button class="like-button ${isLiked ? 'liked' : ''}" 
+                            data-id="${scream.id}" 
+                            data-likes="${scream.likes || 0}">
+                        <i class="fas fa-heart"></i>
+                        <span class="like-count">${scream.likes || 0}</span>
+                    </button>
+                </div>
+            `;
+            
+            screamsFeed.appendChild(screamItem);
+        });
+
+        // Add event listeners to like buttons
+        document.querySelectorAll('.like-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const screamId = button.dataset.id;
+                const currentLikes = parseInt(button.dataset.likes);
+                const likedBy = scream.likedBy || [];
+                likeScream(screamId, currentLikes, likedBy);
+            });
+        });
+    }, (error) => {
+        console.error("Error loading screams:", error);
+        screamsFeed.innerHTML = '<div class="empty-state"><p>Error loading screams. Please refresh.</p></div>';
     });
 }
 
-if (screamInput) screamInput.addEventListener('input', updateCharCount);
-if (screamBtn) screamBtn.addEventListener('click', postScream);
-updateCharCount();
-renderScreams();
+// Initialize
+if (window.firebase) {
+    checkAuthState();
+    renderScreams();
+} else {
+    console.error("Firebase not loaded");
+    screamsFeed.innerHTML = '<div class="empty-state"><p>Error initializing screams.</p></div>';
+}
 
 /* --- MODAL CLOSE HANDLERS --- */
 document.querySelectorAll('.modal .close-button').forEach(button => {
@@ -501,6 +643,4 @@ setTimeout(() => {
     document.body.style.overflow = '';
     document.body.style.height = '';
 }, 100);
-
-// Closing brace for DOMContentLoaded event listener
 });
