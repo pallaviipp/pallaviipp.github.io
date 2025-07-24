@@ -79,23 +79,91 @@ document.addEventListener('DOMContentLoaded', function () {
     const albumsData = [
         {
             id: 0,
-            title: "moments",
-            images: ["assets/sky1.png", "assets/sky2.png", "assets/sky3.png", "assets/sky4.png"]
+            title: "I Wandered Through the Light",
+            images: [
+                { 
+                    src: "assets/sky1.png", 
+                    caption: "Does the sky remember me?" 
+                },
+                { 
+                    src: "assets/sky2.png", 
+                    caption: "Clouds like brushstrokes" 
+                },
+                { 
+                    src: "assets/sky3.png", 
+                    caption: "Horizon dreams" 
+                },
+                { 
+                    src: "assets/sky4.png", 
+                    caption: "Golden hour whispers" 
+                }
+            ]
         },
         {
             id: 1,
-            title: "places",
-            images: ["assets/place3.png", "assets/place1.png", "assets/place2.png", "assets/place4.png"]
+            title: "The City Is So Full of Ghosts",
+            images: [
+                { 
+                    src: "assets/place3.png", 
+                    caption: "Nowhere feels like home" 
+                },
+                { 
+                    src: "assets/place1.png", 
+                    caption: "Neon reflections" 
+                },
+                { 
+                    src: "assets/place2.png", 
+                    caption: "Concrete poetry" 
+                },
+                { 
+                    src: "assets/place4.png", 
+                    caption: "Lonely streetlights" 
+                }
+            ]
         },
         {
             id: 2,
-            title: "<3",
-            images: ["assets/people4.png", "assets/peole1.png", "assets/people2.png", "assets/people3.png"]
+            title: "Is this home?",
+            images: [
+                { 
+                    src: "assets/people4.png", 
+                    caption: "Hugs and loves" 
+                },
+                { 
+                    src: "assets/peole1.png", 
+                    caption: "Shared silence" 
+                },
+                { 
+                    src: "assets/people2.png", 
+                    caption: "Unposed moments" 
+                },
+                { 
+                    src: "assets/people3.png", 
+                    caption: "Fleeting togetherness" 
+                }
+            ]
         },
         {
             id: 3,
-            title: "cafes",
-            images: ["assets/chiya1.png", "assets/food2.png"]
+            title: "Ode to a Hungry Soul",
+            images: [
+                { 
+                    src: "assets/chiya1.png", 
+                    caption: "Tea-stained memories" 
+                },
+                { 
+                    src: "assets/food2.png", 
+                    caption: "Comfort in steam" 
+                },
+                { 
+                    src: "assets/food3.png", 
+                    caption: "Taste of nostalgia" 
+                },
+                { 
+                    src: "assets/food4.png", 
+                    caption: "Bittersweet bites" 
+                }
+            ]
         }
     ];
 
@@ -342,12 +410,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (album) {
             albumModalTitle.textContent = album.title;
             albumGallery.innerHTML = '';
-            album.images.forEach(imgSrc => {
-                const img = document.createElement('img');
-                img.src = imgSrc;
-                img.alt = album.title;
-                img.classList.add('album-image');
-                albumGallery.appendChild(img);
+            
+            album.images.forEach(image => {
+                const polaroid = document.createElement('div');
+                polaroid.classList.add('polaroid-container');
+                
+                polaroid.innerHTML = `
+                    <div class="polaroid">
+                        <img src="${image.src}" alt="${image.caption}" class="polaroid-image">
+                        <div class="polaroid-caption">${image.caption}</div>
+                    </div>
+                `;
+                
+                albumGallery.appendChild(polaroid);
             });
         }
     }

@@ -105,7 +105,7 @@ a:hover {
 }
 
 .sidebar-logo img {
-  height: 85px; /* Fixed size */
+  height: 80px; /* Fixed size */
   width: auto;
   transition: var(--transition-smooth);
   display: block;
@@ -230,7 +230,7 @@ a:hover {
 }
 
 .slide-menu-header img {
-  height: 75px !important; /* Force larger size */
+  height: 70px !important; /* Force larger size */
   width: auto;
   margin-right: 1rem; /* Space between logo and close button */
 }
@@ -327,10 +327,22 @@ a:hover {
   }
   .menu-toggle,
   .dark-mode-toggle-visible {
-    top: 1.5rem;
+      top: 1.5rem;
+      width: 50px;
+      height: 50px;
+  }
+  .menu-toggle {
+      right: 1.5rem;
   }
   .dark-mode-toggle-visible {
-    right: 5rem;
+      right: 5rem;
+  }
+  .menu-line {
+      width: 20px;
+      height: 2px;
+  }
+  .dark-mode-toggle-visible .icon {
+      font-size: 1.2rem;
   }
 }
 
@@ -950,6 +962,103 @@ section {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+}
+
+/* --- POLAROID STYLES --- */
+.polaroid-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.polaroid {
+  background: var(--card-bg);
+  padding: 15px 15px 40px 15px;
+  box-shadow: var(--shadow-medium);
+  transform: rotate(-1deg);
+  transition: var(--transition-smooth);
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: var(--shadow-heavy);
+}
+
+.polaroid-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.polaroid-caption {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-primary);
+  color: var(--text-color);
+  padding: 5px;
+  font-size: 0.9rem;
+}
+
+/* Album Grid adjustments */
+.album-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* Adjust modal for Polaroids */
+#albumGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .album-gallery, #albumGallery {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+/* Random Polaroid rotations */
+.polaroid-container:nth-child(odd) .polaroid {
+  transform: rotate(-2deg);
+}
+.polaroid-container:nth-child(even) .polaroid {
+  transform: rotate(1deg);
+}
+.polaroid-container:nth-child(3n) .polaroid {
+  transform: rotate(3deg);
+}
+
+.polaroid {
+  background: linear-gradient(to bottom, 
+      var(--card-bg) 0%, 
+      #f5f5f5 5%, 
+      var(--card-bg) 100%);
+  filter: sepia(0.1) brightness(0.98) contrast(1.1);
+}
+
+.polaroid::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: 20px;
+  background: var(--shadow-color);
+  filter: blur(10px);
+  z-index: -1;
+  opacity: 0.4;
 }
 
 /* --- WRITINGS SECTION --- */
