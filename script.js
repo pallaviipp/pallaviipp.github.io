@@ -10,8 +10,8 @@ import {
     updateDoc, 
     arrayUnion, 
     arrayRemove,
-    Timestamp,
-    increment 
+    increment,
+    Timestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { 
     getAuth, 
@@ -245,6 +245,21 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         autoHeight: true,
         allowTouchMove: true,
+        on: {
+            slideChange: function() {
+                // Update active tab when slide changes
+                const activeIndex = this.activeIndex;
+                const tabButtons = document.querySelectorAll('.tab-button');
+                
+                tabButtons.forEach((button, index) => {
+                    if (index === activeIndex) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+            }
+        }
     });
 
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -452,7 +467,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Post a scream
     async function postScream() {
-        // Ensure input and button elements are available before proceeding
         if (!screamInput || !screamBtn) {
             console.error("UI elements for screaming are not found!");
             return;
@@ -532,19 +546,19 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // CORRECTED SYNTAX: Use doc(db, 'collectionName', 'documentId')
+        //doc(db, 'collectionName', 'documentId')
         const screamRef = doc(db, "screams", screamId);
         const alreadyLiked = likedBy.includes(user.uid);
 
         try {
             if (alreadyLiked) {
-                // CORRECTED SYNTAX: Use updateDoc with arrayRemove and increment
+                //  updateDoc with arrayRemove and increment
                 await updateDoc(screamRef, {
                     likes: increment(-1),
                     likedBy: arrayRemove(user.uid)
                 });
             } else {
-                // CORRECTED SYNTAX: Use updateDoc with arrayUnion and increment
+                //updateDoc with arrayUnion and increment
                 await updateDoc(screamRef, {
                     likes: increment(1),
                     likedBy: arrayUnion(user.uid)
@@ -566,23 +580,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 screamsFeed.innerHTML = '<div class="empty-state"><p>No wordscreams yet. Be the first to share your thoughts!</p></div>';
                 return;
             }
-
+    
             screamsFeed.innerHTML = '';
             const currentUser = auth.currentUser;
-
+    
             querySnapshot.forEach((doc) => {
                 const scream = { id: doc.id, ...doc.data() };
                 const screamItem = document.createElement('div');
                 screamItem.classList.add('scream-item');
-
-                const date = new Date(scream.timestamp);
-                const formattedDate = date.toLocaleDateString('en-US', {
-                    month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
-                });
-
+    
+                //handle the timestamp
+                let formattedDate = "Just now";
+                if (scream.timestamp) {
+                    // Convert Firestore Timestamp to JavaScript Date
+                    const date = scream.timestamp.toDate ? scream.timestamp.toDate() : new Date(scream.timestamp);
+                    formattedDate = date.toLocaleDateString('en-US', {
+                        month: 'short', 
+                        day: 'numeric', 
+                        year: 'numeric', 
+                        hour: '2-digit', 
+                        minute: '2-digit'
+                    });
+                }
+    
                 const likedBy = scream.likedBy || [];
                 const isLiked = currentUser && likedBy.includes(currentUser.uid);
-
+    
                 screamItem.innerHTML = `
                     <div class="scream-content">
                         <p class="scream-text">${scream.text}</p>
@@ -597,9 +620,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         </button>
                     </div>
                 `;
-
+    
                 screamsFeed.appendChild(screamItem);
-
+    
                 const likeButton = screamItem.querySelector('.like-button');
                 likeButton.addEventListener('click', () => {
                     likeScream(scream.id, likedBy);
@@ -610,7 +633,6 @@ document.addEventListener('DOMContentLoaded', function () {
             screamsFeed.innerHTML = '<div class="empty-state"><p>Error loading screams. Please refresh.</p></div>';
         });
     }
-
     // Initial call
     renderScreams();
 
