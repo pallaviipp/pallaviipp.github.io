@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: "The Midnight Library",
             author: "Matt Haig",
             date: "Read in Jun 2025",
-            cover: "assets/book-covers/midnight-library.jpg",
+            cover: "assets/midnightlibrary.jpg",
             rating: 4.5,
             review: `Between life and death there is a library, and within that library, the shelves go on forever.
              Every book provides a chance to try another life you could have lived...\n\nThis novel made me reflect deeply on the choices we make and the infinite possibilities of life.
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: "The White Book",
             author: "Han Kang",
             date: "Read in Feb 2025",
-            cover: "assets/book-covers/white-book.jpg",
+            cover: "assets/whitebook.jpg",
             rating: 4.7,
             review: `A meditation on grief, memory, and the color white.\n\nHan Kang’s prose is stark yet poetic, the themes of white objects explores fragility of life in a way that hasn't been done before.
              Structured like a series of vignettes, the book weaves together life and loss with haunting clarity.
