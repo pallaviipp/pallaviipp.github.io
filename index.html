@@ -50,10 +50,11 @@
             <li><a href="#projects" class="sidebar-nav-link" data-section-id="projects">[ 02_PROJECTS ]</a></li>
             <li><a href="#albums" class="sidebar-nav-link" data-section-id="albums">[ 03_ALBUMS ]</a></li>
             <li><a href="#writings" class="sidebar-nav-link" data-section-id="writings">[ 04_WRITINGS ]</a></li>
-            <li><a href="#wordscreams" class="sidebar-nav-link" data-section-id="wordscreams">[ 05_WORDSCREAMS ]</a></li>
+            <li><a href="#wordscreams" class="sidebar-nav-link" data-section-id="wordscreams">[ 05_WORDSCREAMS ]</a>
+            </li>
             <li><a href="#book-nook" class="sidebar-nav-link" data-section-id="book-nook">[ 06_BOOKNOOK ]</a></li>
             <li><a href="#contact" class="sidebar-nav-link" data-section-id="contact">[ 07_CONTACT ]</a></li>
-            
+
         </ul>
     </nav>
 
@@ -447,9 +448,23 @@
                         <div class="book-bubble bubble-1"></div>
                         <div class="book-bubble bubble-2"></div>
                     </div>
-                    <p class="section-description">Click to enter</p>
+                    <p class="section-description">Click to browse my reading journal</p>
                 </div>
             </section>
+
+            <!-- Book Collection Modal -->
+            <div id="bookCollectionModal" class="modal">
+                <div class="modal-content book-collection-content">
+                    <span class="close-button">&times;</span>
+                    <div class="book-collection-header">
+                        <h3>My Reading Journal</h3>
+                        <p class="collection-subtitle">Recent Readings</p>
+                    </div>
+                    <div class="book-grid">
+                        <!-- Books will be inserted here dynamically -->
+                    </div>
+                </div>
+            </div>
 
             <!-- Book Review Modal -->
             <div id="bookReviewModal" class="modal">

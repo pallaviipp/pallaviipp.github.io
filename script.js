@@ -215,6 +215,65 @@ document.addEventListener('DOMContentLoaded', function () {
 
     ];
 
+    // Add this after the bookReviewsData array
+function openBookCollection() {
+    const modal = document.getElementById('bookCollectionModal');
+    const bookGrid = document.querySelector('.book-grid');
+    
+    // Clear previous content
+    bookGrid.innerHTML = '';
+    
+    // Add all books to the grid
+    bookReviewsData.forEach(book => {
+        const bookCard = document.createElement('div');
+        bookCard.className = 'book-card';
+        bookCard.dataset.bookId = book.id;
+        
+        bookCard.innerHTML = `
+            <div class="book-card-inner">
+                <div class="book-card-front">
+                    <img src="${book.cover}" alt="${book.title}" class="book-thumbnail">
+                    <div class="book-info">
+                        <h4>${book.title}</h4>
+                        <p>${book.author}</p>
+                    </div>
+                </div>
+                <div class="book-card-back">
+                    <p>${book.review.substring(0, 100)}...</p>
+                    <button class="read-more-btn" data-book-id="${book.id}">Read Review</button>
+                </div>
+            </div>
+        `;
+        
+        bookGrid.appendChild(bookCard);
+    });
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Add click handlers for book cards
+    document.querySelectorAll('.book-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('read-more-btn')) {
+                card.classList.toggle('flipped');
+            }
+        });
+    });
+    
+    // Add click handlers for read more buttons
+    document.querySelectorAll('.read-more-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const bookId = parseInt(btn.dataset.bookId);
+            document.getElementById('bookCollectionModal').style.display = 'none';
+            openBookReview(bookId);
+        });
+    });
+}
+
+//book icon click handler
+document.querySelector('.book-icon-container').addEventListener('click', openBookCollection);
+
     let currentProjectIndex = 0;
     let currentAlbumIndex = 0;
 
@@ -598,10 +657,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Book Nook Interaction
-    document.querySelector('.book-icon-container').addEventListener('click', () => {
-        openBookReview(1); // Opens the first book by default
-    });
 
     function openBookReview(bookId) {
         const book = bookReviewsData.find(b => b.id === bookId);
