@@ -193,7 +193,24 @@ document.addEventListener('DOMContentLoaded', function () {
             date: "Read in Jun 2025",
             cover: "assets/book-covers/midnight-library.jpg",
             rating: 4.5,
-            review: `Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived...\n\nThis novel made me reflect deeply on the choices we make and the infinite possibilities of life. Haig's writing is poignant yet accessible, blending philosophical musings with a compelling narrative. The protagonist's journey through her "what if" lives was both heartbreaking and uplifting.`
+            review: `Between life and death there is a library, and within that library, the shelves go on forever.
+             Every book provides a chance to try another life you could have lived...\n\nThis novel made me reflect deeply on the choices we make and the infinite possibilities of life.
+              Haig's writing is poignant yet accessible, blending philosophical musings with a compelling narrative. The protagonist's journey through her "what if" lives was very heartbreaking yet uplifting, 
+              it made me think about how my choices are shaping my life and how I can learn to embrace the beauty of the present, embrace the realities of my own life`
+        },
+
+        {
+            id: 2,
+            title: "The White Book",
+            author: "Han Kang",
+            date: "Read in Feb 2025",
+            cover: "assets/book-covers/white-book.jpg",
+            rating: 4.7,
+            review: `A meditation on grief, memory, and the color white.\n\nHan Kang’s prose is stark yet poetic, the themes of white objects explores fragility of life in a way that hasn't been done before.
+             Structured like a series of vignettes, the book weaves together life and loss with haunting clarity.
+             It’s not a story in the traditional sense, but more of an elegy, a delicate accumulation of snowflakes forming something vast and unknowable.\n\n
+             Reading it felt like wandering through a quiet, cold city wrapped in fog. Every white object: a newborn gown, rice, snow, paper, eventually becomes a symbol for both absence and remembrance.
+             A deeply intimate and fragile book that stays in your mind long after the final page.`
         }
 
     ];
