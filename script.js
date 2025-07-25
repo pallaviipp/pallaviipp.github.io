@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: "AWS Certified Solutions Architect",
             issuer: "Amazon Web Services",
             date: "May, 2025",
-            credentialId: "ac6654631e504067b2fba4b164578c09", 
+            credentialId: "ac6654631e504067b2fba4b164578c09",
             image: "assets/aws-solutions-architect.png"
         },
         {
@@ -183,6 +183,19 @@ document.addEventListener('DOMContentLoaded', function () {
             date: "2024",
             image: "assets/zerone-writing.jpg"
         }
+    ];
+
+    const bookReviewsData = [
+        {
+            id: 1,
+            title: "The Midnight Library",
+            author: "Matt Haig",
+            date: "Read in Jun 2025",
+            cover: "assets/book-covers/midnight-library.jpg",
+            rating: 4.5,
+            review: `Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived...\n\nThis novel made me reflect deeply on the choices we make and the infinite possibilities of life. Haig's writing is poignant yet accessible, blending philosophical musings with a compelling narrative. The protagonist's journey through her "what if" lives was both heartbreaking and uplifting.`
+        }
+
     ];
 
     let currentProjectIndex = 0;
@@ -332,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function () {
         autoHeight: true,
         allowTouchMove: true,
         on: {
-            init: function() {
+            init: function () {
                 renderCertifications();
             },
             slideChange: function () {
@@ -353,13 +366,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderCertifications() {
         const certsContainer = document.querySelector('.certifications-grid');
         if (!certsContainer) return;
-        
+
         certsContainer.innerHTML = '';
-        
+
         certificationsData.forEach(cert => {
             const certCard = document.createElement('div');
             certCard.className = 'certificate-card';
-            
+
             certCard.innerHTML = `
                 <img src="${cert.image}" alt="${cert.title}" class="certificate-image">
                 <div class="certificate-details">
@@ -378,10 +391,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     </a>` : ''}
                 </div>
             `;
-            
+
             certsContainer.appendChild(certCard);
         });
-    } 
+    }
 
     const tabButtons = document.querySelectorAll('.tab-button');
     tabButtons.forEach((button, index) => {
@@ -567,6 +580,41 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Book Nook Interaction
+    document.querySelector('.book-icon-container').addEventListener('click', () => {
+        openBookReview(1); // Opens the first book by default
+    });
+
+    function openBookReview(bookId) {
+        const book = bookReviewsData.find(b => b.id === bookId);
+        if (!book) return;
+
+        document.getElementById('bookTitle').textContent = book.title;
+        document.getElementById('bookAuthor').textContent = book.author;
+        document.getElementById('bookDate').textContent = book.date;
+        document.getElementById('bookCover').src = book.cover;
+        document.getElementById('bookReviewText').innerHTML = book.review.replace(/\n\n/g, '<br><br>');
+
+        // Set rating stars
+        const ratingContainer = document.querySelector('.book-rating');
+        ratingContainer.innerHTML = '';
+        const fullStars = Math.floor(book.rating);
+        const hasHalfStar = book.rating % 1 >= 0.5;
+
+        for (let i = 0; i < fullStars; i++) {
+            ratingContainer.innerHTML += '<i class="fas fa-star"></i>';
+        }
+        if (hasHalfStar) {
+            ratingContainer.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+        }
+        for (let i = 0; i < 5 - Math.ceil(book.rating); i++) {
+            ratingContainer.innerHTML += '<i class="far fa-star"></i>';
+        }
+
+        document.getElementById('bookReviewModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
     // --- Modal Close Handlers ---
     document.querySelectorAll('.modal .close-button').forEach(button => {

@@ -1872,6 +1872,128 @@ section {
   opacity: 0.7;
 }
 
+/* --- BOOK NOOK SECTION --- */
+.book-nook-container {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.book-icon-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 2rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.book-icon {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+  transition: var(--transition-smooth);
+}
+
+.book-icon:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* Book Bubbles */
+.book-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(147, 112, 219, 0.15);
+  animation: float 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+.book-bubble-1 {
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.book-bubble-2 {
+  width: 30px;
+  height: 30px;
+  bottom: -15px;
+  right: 30px;
+  animation-delay: 1s;
+}
+
+/* --- BOOK REVIEW MODAL --- */
+.book-review-content {
+  max-width: 800px;
+  background: #f5f0e6;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d9c7a7" stroke-width="1"/></svg>');
+  background-size: 20px 20px;
+  color: #3a3226;
+  border-left: 5px solid #8b7355;
+  font-family: 'Libre Baskerville', serif;
+  padding: 2.5rem;
+}
+
+.book-review-header {
+  border-bottom: 1px solid #d9c7a7;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.book-review-header h3 {
+  font-family: 'Playfair Display', serif;
+  color: #5d4b36;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.book-meta {
+  font-style: italic;
+  color: #7a6b58;
+}
+
+.book-review-body {
+  display: flex;
+  gap: 2rem;
+}
+
+.book-cover-container {
+  flex: 0 0 200px;
+}
+
+.book-cover {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border: 1px solid #d9c7a7;
+}
+
+.book-rating {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #e3b04b;
+}
+
+.book-review-text {
+  flex: 1;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.book-review-text p {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .book-review-body {
+      flex-direction: column;
+  }
+  .book-cover-container {
+      margin-bottom: 1.5rem;
+  }
+}
+
 /* --- CONTACT SECTION --- */
 .contact-container {
   text-align: center;
