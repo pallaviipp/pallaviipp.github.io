@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const screamBtn = document.getElementById('screamBtn');
     const charCount = document.getElementById('charCount');
     const screamsFeed = document.getElementById('screamsFeed');
+    let currentBookReviewId = null;
 
     // --- Data ---
     const projectsData = [
@@ -216,20 +217,20 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     // Add this after the bookReviewsData array
-function openBookCollection() {
-    const modal = document.getElementById('bookCollectionModal');
-    const bookGrid = document.querySelector('.book-grid');
-    
-    // Clear previous content
-    bookGrid.innerHTML = '';
-    
-    // Add all books to the grid
-    bookReviewsData.forEach(book => {
-        const bookCard = document.createElement('div');
-        bookCard.className = 'book-card';
-        bookCard.dataset.bookId = book.id;
-        
-        bookCard.innerHTML = `
+    function openBookCollection() {
+        const modal = document.getElementById('bookCollectionModal');
+        const bookGrid = document.querySelector('.book-grid');
+
+        // Clear previous content
+        bookGrid.innerHTML = '';
+
+        // Add all books to the grid
+        bookReviewsData.forEach(book => {
+            const bookCard = document.createElement('div');
+            bookCard.className = 'book-card';
+            bookCard.dataset.bookId = book.id;
+
+            bookCard.innerHTML = `
             <div class="book-card-inner">
                 <div class="book-card-front">
                     <img src="${book.cover}" alt="${book.title}" class="book-thumbnail">
@@ -244,35 +245,35 @@ function openBookCollection() {
                 </div>
             </div>
         `;
-        
-        bookGrid.appendChild(bookCard);
-    });
-    
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    
-    // Add click handlers for book cards
-    document.querySelectorAll('.book-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('read-more-btn')) {
-                card.classList.toggle('flipped');
-            }
-        });
-    });
-    
-    // Add click handlers for read more buttons
-    document.querySelectorAll('.read-more-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const bookId = parseInt(btn.dataset.bookId);
-            document.getElementById('bookCollectionModal').style.display = 'none';
-            openBookReview(bookId);
-        });
-    });
-}
 
-//book icon click handler
-document.querySelector('.book-icon-container').addEventListener('click', openBookCollection);
+            bookGrid.appendChild(bookCard);
+        });
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // Add click handlers for book cards
+        document.querySelectorAll('.book-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('read-more-btn')) {
+                    card.classList.toggle('flipped');
+                }
+            });
+        });
+
+        // Add click handlers for read more buttons
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const bookId = parseInt(btn.dataset.bookId);
+                document.getElementById('bookCollectionModal').style.display = 'none';
+                openBookReview(bookId);
+            });
+        });
+    }
+
+    //book icon click handler
+    document.querySelector('.book-icon-container').addEventListener('click', openBookCollection);
 
     let currentProjectIndex = 0;
     let currentAlbumIndex = 0;
@@ -662,6 +663,9 @@ document.querySelector('.book-icon-container').addEventListener('click', openBoo
         const book = bookReviewsData.find(b => b.id === bookId);
         if (!book) return;
 
+        // Store the current book ID for back navigation
+        currentBookReviewId = bookId;
+
         document.getElementById('bookTitle').textContent = book.title;
         document.getElementById('bookAuthor').textContent = book.author;
         document.getElementById('bookDate').textContent = book.date;
@@ -687,6 +691,12 @@ document.querySelector('.book-icon-container').addEventListener('click', openBoo
         document.getElementById('bookReviewModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
+
+    // Back to collection button handler
+    document.querySelector('.back-to-collection')?.addEventListener('click', () => {
+        document.getElementById('bookReviewModal').style.display = 'none';
+        openBookCollection();
+    });
 
     // --- Modal Close Handlers ---
     document.querySelectorAll('.modal .close-button').forEach(button => {
