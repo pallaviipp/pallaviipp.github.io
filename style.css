@@ -1238,6 +1238,7 @@ section {
 }
 
 .category-content.active {
+  max-height: 2000px;
   padding: 1.5rem;
 }
 
@@ -1268,7 +1269,7 @@ section {
   line-height: 1.6;
 }
 
-.open-writing-modal {
+.open-writing-modal, .read-more-button {
   background: var(--accent-color);
   color: var(--bg-color);
   border: none;
@@ -1279,6 +1280,8 @@ section {
   cursor: pointer;
   transition: var(--transition-smooth);
   font-size: 0.85rem;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .open-writing-modal:hover {
